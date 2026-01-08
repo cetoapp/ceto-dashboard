@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Inter";
+    font-weight: 400;
+    src: url("./assets/fonts/Inter-Regular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-weight: 500;
+    src: url("./assets/fonts/Inter-Medium.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Roboto Mono";
+    font-weight: 400;
+    src: url("./assets/fonts/RobotoMono-Regular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Roboto Mono";
+    font-weight: 500;
+    src: url("./assets/fonts/RobotoMono-Medium.ttf") format("truetype");
+  }
+
+  :root {
+    @apply bg-ui-bg-subtle text-ui-fg-base antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer components {
+  .worfklow-grid {
+    background-image: radial-gradient(black 1px, transparent 0);
+    background-size: 40px 40px;
+    background: repeat;
+  }
+}
+
+.worfklow-grid {
+  background-image: radial-gradient(black 1px, transparent 0);
+  background-size: 40px 40px;
+  background: repeat;
+}
+
+:root {
+  --buttons-inverted: 0 0 0 1px #404043; /* rgba(18, 29, 47, 1) */
+  --button-inverted: rgba(22, 37, 59, 1);
+  --button-inverted-pressed: rgba(22, 37, 59, 0.9);
+  --button-inverted-hover: rgba(22, 37, 59, 0.9);
+  --text-ui-fg-interactive: rgba(22, 37, 59, 1);
+  --text-ui-fg-interactive-hover: rgba(22, 37, 59, 1);
+}
