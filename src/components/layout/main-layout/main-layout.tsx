@@ -28,6 +28,7 @@ import { useExtension } from "../../../providers/extension-provider";
 import { useSearch } from "../../../providers/search-provider";
 import { UserMenu } from "../user-menu";
 import { useDocumentDirection } from "../../../hooks/use-document-direction";
+import IconBox from "../../common/logo-box/icon-box";
 
 export const MainLayout = () => {
   return (
@@ -116,7 +117,7 @@ const Header = () => {
           )}
         >
           {fallback ? (
-            <Avatar variant="squared" size="xsmall" fallback={fallback} />
+            <IconBox size="small" />
           ) : (
             <Skeleton className="h-6 w-6 rounded-md" />
           )}
@@ -139,7 +140,7 @@ const Header = () => {
         {isLoaded && (
           <DropdownMenu.Content className="w-[var(--radix-dropdown-menu-trigger-width)] min-w-0">
             <div className="flex items-center gap-x-3 px-2 py-1">
-              <Avatar variant="squared" size="small" fallback={fallback} />
+              <IconBox size="small" />
               <div className="flex flex-col overflow-hidden">
                 <Text
                   size="small"
