@@ -80,11 +80,11 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref_name }}  # this will be the update-<target> branch
-          commit-message: "Sync Medusa Dashboard (${{ github.ref_name }})"
-          title: "feat: Sync Medusa Dashboard to ${{ github.ref_name }}"
+          branch: ${{ env.BRANCH }}       
+          commit-message: "Sync Medusa Dashboard (${{ env.BRANCH }})"
+          title: "feat: Sync Medusa Dashboard to ${{ env.BRANCH }}"
           body: |
             **Automated dashboard sync**
-            From: ${{ github.ref_name }}
-            To: ${{ github.ref_name }}
+            From: ${{ env.CURRENT_TAG }}
+            To: ${{ env.TARGET_TAG }}
             ⚠️ This PR contains merge conflicts that require manual resolution.
