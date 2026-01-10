@@ -26,7 +26,7 @@ jobs:
       - name: Sync Dashboard from Medusa
         env:
           TARGET_PATH: packages/admin/dashboard
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.MEDUSA_SYNC_PAT }}
         run: |
           set -e
 
