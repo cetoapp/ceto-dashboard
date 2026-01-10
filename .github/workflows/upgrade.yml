@@ -24,6 +24,7 @@ jobs:
           git config user.email "bot@noreply.github.com"
 
       - name: Sync Dashboard from Medusa
+        id: sync
         env:
           TARGET_PATH: packages/admin/dashboard
         run: |
@@ -35,10 +36,16 @@ jobs:
           CURRENT_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 2 | head -n 1)
           TARGET_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
 
-          echo "Current: $CURRENT_TAG"
-          echo "Target: $TARGET_TAG"
-
           BRANCH="update-$TARGET_TAG"
+
+          # Persist variables for next step
+          echo "CURRENT_TAG=$CURRENT_TAG" >> $GITHUB_ENV
+          echo "TARGET_TAG=$TARGET_TAG" >> $GITHUB_ENV
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+
+          echo "Current: $CURRENT_TAG"
+          echo "Target : $TARGET_TAG"
+          echo "Branch : $BRANCH"
 
           if git ls-remote --exit-code --heads origin "$BRANCH"; then
             echo "Branch already exists. Exiting."
@@ -47,7 +54,7 @@ jobs:
 
           git checkout -b "$BRANCH"
 
-          # Fake ancestor commit
+          # --- Fake ancestor commit ---
           BASE_ID=$(git commit-tree "$CURRENT_TAG:$TARGET_PATH" \
             -m "Base History ($CURRENT_TAG)")
 
@@ -57,7 +64,7 @@ jobs:
             -s ours \
             -m "Chore: Link Medusa history ($CURRENT_TAG)"
 
-          # Target update commit
+          # --- Target update commit ---
           TARGET_ID=$(git commit-tree "$TARGET_TAG:$TARGET_PATH" \
             -m "Update Target ($TARGET_TAG)")
 
@@ -80,7 +87,7 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.BRANCH }}       
+          branch: ${{ env.BRANCH }}
           commit-message: "Sync Medusa Dashboard (${{ env.BRANCH }})"
           title: "feat: Sync Medusa Dashboard to ${{ env.BRANCH }}"
           body: |
