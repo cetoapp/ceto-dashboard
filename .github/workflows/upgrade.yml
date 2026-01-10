@@ -35,10 +35,14 @@ jobs:
 
           CURRENT_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 2 | head -n 1)
           TARGET_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
+          
+          # For testing, you might want to hardcode these if tags aren't resolving correctly
+          # CURRENT_TAG="v2.12.4"
+          # TARGET_TAG="v2.12.5"
 
           BRANCH="update-$TARGET_TAG"
 
-          # Persist variables for next step
+          # Export variables for the next step
           echo "CURRENT_TAG=$CURRENT_TAG" >> $GITHUB_ENV
           echo "TARGET_TAG=$TARGET_TAG" >> $GITHUB_ENV
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
@@ -47,14 +51,19 @@ jobs:
           echo "Target : $TARGET_TAG"
           echo "Branch : $BRANCH"
 
+          # Check if remote branch exists
           if git ls-remote --exit-code --heads origin "$BRANCH"; then
-            echo "Branch already exists. Exiting."
+            echo "Branch $BRANCH already exists on remote."
+            # We exit successfully here, assuming if the branch exists, the PR likely does too.
+            # If you want to update an existing branch, remove this block.
+            echo "EXISTS=true" >> $GITHUB_ENV
             exit 0
           fi
 
           git checkout -b "$BRANCH"
 
           # --- Fake ancestor commit ---
+          # We create a history disconnect here deliberately
           BASE_ID=$(git commit-tree "$CURRENT_TAG:$TARGET_PATH" \
             -m "Base History ($CURRENT_TAG)")
 
@@ -78,22 +87,26 @@ jobs:
           set -e
 
           # Commit conflicted state so PR can show conflicts
+          # We purposefully ignore errors here in case there are no conflicts
           git add -A
           git commit -m "WIP: Resolve conflicts for Medusa $TARGET_TAG" || true
 
+          # Push the branch manually
           git push origin "$BRANCH"
+          echo "EXISTS=false" >> $GITHUB_ENV
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v8
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.BRANCH }}       
-          base: main                       
-          commit-message: "Sync Medusa Dashboard (${{ env.BRANCH }})"
-          title: "feat: Sync Medusa Dashboard to ${{ env.BRANCH }}"
-          body: |
-            **Automated dashboard sync**
+        if: env.EXISTS == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base main \
+            --head "${{ env.BRANCH }}" \
+            --title "feat: Sync Medusa Dashboard to ${{ env.BRANCH }}" \
+            --body "**Automated dashboard sync**
+            
             From: ${{ env.CURRENT_TAG }}
             To: ${{ env.TARGET_TAG }}
-            ⚠️ This PR contains merge conflicts that require manual resolution.
-
+            
+            ⚠️ This PR contains merge conflicts that require manual resolution."
