@@ -1,13 +1,12 @@
-name: Sync Medusa Dashboard
+name: Sync Medusa Dashboard (Direct Tree)
 
 on:
   schedule:
-    # Run daily at 07:00 UTC
-    - cron: '0 7 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+    - cron: '0 7 * * *' # Run daily at 07:00 UTC
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
-  sync-upstream:
+  sync-direct:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,63 +16,58 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Necessary to calculate history
+          fetch-depth: 0
 
       - name: Configure Git Bot
         run: |
           git config user.name "Medusa Sync Bot"
           git config user.email "bot@noreply.github.com"
 
-      - name: Check for New Version
-        id: check
+      - name: Sync Logic
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 1. Add Upstream Remote
+          # 1. Setup Upstream and Force Fetch Tags
           git remote add upstream https://github.com/medusajs/medusa.git
-          
-          # 2. Fetch tags FORCEFULLY
+          echo "Fetching upstream tags..."
           git fetch upstream --tags --force
 
-          # 3. Find the latest stable tag (v2.*)
+          # 2. Identify the Latest Tag
           LATEST_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
           echo "Latest Medusa Release: $LATEST_TAG"
 
-          # 4. Check if we already have a PR branch for this version
-          if git ls-remote --heads origin "update-$LATEST_TAG" | grep -q "update-$LATEST_TAG"; then
-            echo "Branch 'update-$LATEST_TAG' already exists. Skipping."
-            echo "PROCESS=skip" >> $GITHUB_OUTPUT
+          # 3. Check if we already have a branch for this
+          if git ls-remote --exit-code --heads origin "update-$LATEST_TAG"; then
+            echo "Branch 'update-$LATEST_TAG' already exists. Exiting."
             exit 0
           fi
 
-          # 5. Check if the folder exists in this tag (Safety Check)
-          if ! git ls-tree -d "upstream/$LATEST_TAG" packages/admin/dashboard; then
-             echo "ERROR: 'packages/admin/dashboard' not found in $LATEST_TAG. Skipping."
-             echo "PROCESS=skip" >> $GITHUB_OUTPUT
-             exit 0
+          # 4. PATH DETECTION (Smart check)
+          # We check if the 'dashboard' folder object exists in the tag
+          if git rev-parse --verify "upstream/$LATEST_TAG:packages/admin/dashboard" >/dev/null 2>&1; then
+             TARGET_PATH="packages/admin/dashboard"
+          else
+             echo "❌ Error: Could not find dashboard folder in $LATEST_TAG"
+             exit 1
           fi
-
-          echo "PROCESS=run" >> $GITHUB_OUTPUT
-          echo "TAG=$LATEST_TAG" >> $GITHUB_OUTPUT
-
-      - name: Extract and Create PR
-        if: steps.check.outputs.PROCESS == 'run'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ steps.check.outputs.TAG }}
-          TARGET_FOLDER: packages/admin/dashboard
-        run: |
-          echo "Syncing $TARGET_FOLDER from tag $TAG..."
-
-          # 1. Split the folder history
-          # Since you fixed the history locally, subtree should now work smoothly
-          git subtree split --prefix=$TARGET_FOLDER -b "update-$TAG" "upstream/$TAG"
           
-          # 2. Push to your repo
-          git push origin "update-$TAG" --force
+          echo "✅ Found target path: $TARGET_PATH"
 
-          # 3. Create Pull Request
+          # 5. THE "NUCLEAR" FIX (Commit-Tree Strategy)
+          # Get the Tree SHA of the folder directly (bypassing subtree logic)
+          TREE_SHA=$(git rev-parse "upstream/$LATEST_TAG:$TARGET_PATH")
+          
+          # Create a commit object from that tree (orphaned commit, exactly like your manual fix)
+          NEW_COMMIT_ID=$(git commit-tree -m "Sync: Update Medusa Dashboard to $LATEST_TAG" "$TREE_SHA")
+          
+          echo "Created new sync commit: $NEW_COMMIT_ID"
+
+          # 6. Push this commit as a new branch
+          git push origin $NEW_COMMIT_ID:refs/heads/update-$LATEST_TAG --force
+
+          # 7. Create Pull Request
           gh pr create \
             --base main \
-            --head "update-$TAG" \
-            --title "feat: Update Medusa Dashboard to $TAG" \
-            --body "Automated sync from Medusa upstream tag **$TAG**.\n\nSource: \`$TARGET_FOLDER\`\n\n**Instructions:**\n1. Pull this branch locally.\n2. Resolve conflicts (if any).\n3. Merge and push." \
-            || echo "PR likely already exists"
+            --head "update-$LATEST_TAG" \
+            --title "feat: Update Medusa Dashboard to $LATEST_TAG" \
+            --body "Automated sync using Direct Tree Strategy.\n\n**Version:** $LATEST_TAG\n**Source:** $TARGET_PATH\n\nSince this uses the 'unrelated history' method, you may need to use '--allow-unrelated-histories' if merging locally, though GitHub UI should handle it."
