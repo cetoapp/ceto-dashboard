@@ -2,11 +2,11 @@ name: Automatic Dashboard Upgrade
 
 on:
   schedule:
-    - cron: '0 7 * * 1' # Run weekly on Monday at 07:00 UTC
-  workflow_dispatch: # Allows manual trigger
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
 
 jobs:
-  sync-direct:
+  sync-dashboard:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,46 +18,59 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure Git Bot
+      - name: Configure Git
         run: |
           git config user.name "Medusa Sync Bot"
           git config user.email "bot@noreply.github.com"
 
-      - name: Sync Logic
+      - name: Sync Dashboard from Medusa
         env:
+          TARGET_PATH: packages/admin/dashboard
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 1. Setup Upstream and Force Fetch Tags
-          git remote add upstream https://github.com/medusajs/medusa.git
-          echo "Fetching upstream tags..."
-          git fetch upstream --tags --force
+          set -e
 
-          # 2. Identify the Latest Tag
-          LATEST_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
-          echo "Latest Medusa Release: $LATEST_TAG"
+          git remote add upstream-medusa https://github.com/medusajs/medusa.git || true
+          git fetch upstream-medusa --tags --force
 
-          # 3. Check if we already have a branch for this
-          if git ls-remote --exit-code --heads origin "update-$LATEST_TAG"; then
-            echo "Branch 'update-$LATEST_TAG' already exists. Exiting."
+          CURRENT_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 2 | head -n 1)
+          TARGET_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
+
+          echo "Current: $CURRENT_TAG"
+          echo "Target : $TARGET_TAG"
+
+          BRANCH="update-$TARGET_TAG"
+
+          if git ls-remote --exit-code --heads origin "$BRANCH"; then
+            echo "Branch already exists. Exiting."
             exit 0
           fi
-          
-          echo "✅ Found target path: $TARGET_PATH"
 
-          # Get the Tree SHA of the folder directly (bypassing subtree logic)
-          TREE_SHA=$(git rev-parse "$LATEST_TAG:$TARGET_PATH")
-          
-          # Create a commit object from that tree (orphaned commit)
-          NEW_COMMIT_ID=$(git commit-tree -m "Sync: Update Medusa Dashboard to $LATEST_TAG" "$TREE_SHA")
-          
-          echo "Created new sync commit: $NEW_COMMIT_ID"
+          git checkout -b "$BRANCH"
 
-          # 6. Push this commit as a new branch
-          git push origin $NEW_COMMIT_ID:refs/heads/update-$LATEST_TAG --force
+          # --- Fake ancestor (current version) ---
+          BASE_ID=$(git commit-tree "$CURRENT_TAG:$TARGET_PATH" \
+            -m "Base History ($CURRENT_TAG)")
 
-          # 7. Create Pull Request
+          git branch -f base-history "$BASE_ID"
+          git merge base-history \
+            --allow-unrelated-histories \
+            -s ours \
+            -m "Chore: Link Medusa history ($CURRENT_TAG)"
+
+          # --- Target update ---
+          TARGET_ID=$(git commit-tree "$TARGET_TAG:$TARGET_PATH" \
+            -m "Update Target ($TARGET_TAG)")
+
+          git branch -f update-target "$TARGET_ID"
+          git merge update-target \
+            --allow-unrelated-histories \
+            -m "Update: Sync Dashboard to $TARGET_TAG"
+
+          git push origin "$BRANCH"
+
           gh pr create \
             --base main \
-            --head "update-$LATEST_TAG" \
-            --title "feat: Update Medusa Dashboard to $LATEST_TAG" \
-            --body "Automated sync using Direct Tree Strategy.\n\n**Version:** $LATEST_TAG\n**Source:** $TARGET_PATH"
+            --head "$BRANCH" \
+            --title "feat: Sync Medusa Dashboard to $TARGET_TAG" \
+            --body "**Automated dashboard sync**\n\nFrom: $CURRENT_TAG\nTo: $TARGET_TAG"
