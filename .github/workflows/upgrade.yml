@@ -87,7 +87,8 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.BRANCH }}
+          branch: ${{ env.BRANCH }}       
+          base: main                       
           commit-message: "Sync Medusa Dashboard (${{ env.BRANCH }})"
           title: "feat: Sync Medusa Dashboard to ${{ env.BRANCH }}"
           body: |
@@ -95,3 +96,4 @@ jobs:
             From: ${{ env.CURRENT_TAG }}
             To: ${{ env.TARGET_TAG }}
             ⚠️ This PR contains merge conflicts that require manual resolution.
+
