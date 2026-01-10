@@ -26,7 +26,6 @@ jobs:
       - name: Sync Dashboard from Medusa
         env:
           TARGET_PATH: packages/admin/dashboard
-          GH_TOKEN: ${{ secrets.MEDUSA_SYNC_PAT }}
         run: |
           set -e
 
@@ -77,6 +76,12 @@ jobs:
 
           git push origin "$BRANCH"
 
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.MEDUSA_SYNC_PAT }}
+        run: |
+          # Export PAT so gh CLI can see it
+          export GH_TOKEN="${GH_TOKEN}"
           gh pr create \
             --base main \
             --head "$BRANCH" \
