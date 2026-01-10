@@ -6,6 +6,7 @@ This documentation outlines the step-by-step process to create and update the da
 > If any modifications are introduced, please update the upgrade checklist accordingly.
 
 > ⚠️ **Warning:** Since Medusa Didn't do dashboard updates in the v2.12.5 then we can't test the workflow yet.
+
 > ✅ **Note:** After a new Medusa release, ensure the version input is updated from the repository and the scheduled cron job is restored.
 
 ## Upgrade Checklist
