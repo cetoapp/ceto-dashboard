@@ -7,6 +7,34 @@ This documentation outlines the step-by-step process to create and update the da
 
 ## Upgrade Checklist
 
+### Upgrading Steps
+
+Follow these steps to upgrade the dashboard to a newer Medusa version:
+
+```bash
+# 1. Ensure we are clean
+git reset --hard HEAD
+
+# 2. Re-fetch tags to be safe
+git fetch upstream-medusa --tags --force
+
+# 3. Create the "Fake Ancestor" (current medusa version we are following)
+# We use the commit-tree plumbing command to bypass Windows path issues
+$BASE_ID = git commit-tree "v<current>:packages/admin/dashboard" -m "Base History (<current>)"
+
+# 4. Merge the Ancestor (Use --allow-unrelated-histories)
+# This links the histories without changing your files (-s ours)
+git branch -f base-history $BASE_ID
+git merge base-history --allow-unrelated-histories -s ours -m "Chore: Link history"
+
+# 5. Create the Target Update (target medusa tag)
+$TARGET_ID = git commit-tree "v<target>:packages/admin/dashboard" -m "Update Target (<target>)"
+
+# 6. Merge the Update (FORCE the unrelated history flag here too just in case)
+git branch -f update-target $TARGET_ID
+git merge update-target --allow-unrelated-histories -m "Update: Sync to Medusa <target>"
+```
+
 ### Conflict Resolution & Upgrade Steps
 
 When upgrading the dashboard version, follow this conflict resolution checklist:
