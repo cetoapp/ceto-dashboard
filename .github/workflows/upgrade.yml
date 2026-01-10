@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       current_version:
-        description: 'The "Vanilla" Medusa version you started with (e.g., v2.12.0)'
+        description: 'The "Vanilla" Medusa version this Repository follows'
         required: true
-        default: 'v2.12.0'
+        default: 'v2.12.4'
 
 jobs:
   sync-dashboard:
@@ -34,11 +34,11 @@ jobs:
         run: |
           set -e
           
-          # 1. Fetch Upstream Medusa Tags
+          # Fetch Upstream Medusa Tags
           git remote add upstream-medusa https://github.com/medusajs/medusa.git || true
           git fetch upstream-medusa --tags --force
 
-          # 2. Identify the Target (Newest Version)
+          # Identify the Target (Newest Version)
           TARGET_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
 
           # Define Branch Names
@@ -51,7 +51,7 @@ jobs:
           echo "YOUR CODE: Current content of 'main'"
           echo "--------------------------------"
 
-          # 3. Clean up old runs if they exist
+          # Clean up old runs if they exist
           git push origin --delete "$BASE_BRANCH" 2>/dev/null || true
           git push origin --delete "$HEAD_BRANCH" 2>/dev/null || true
 

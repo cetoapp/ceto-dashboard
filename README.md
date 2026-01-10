@@ -5,6 +5,8 @@ This documentation outlines the step-by-step process to create and update the da
 > ⚠️ **Warning:** This project is currently based on Medusa version 2.12.3.  
 > If any modifications are introduced, please update the upgrade checklist accordingly.
 
+> ⚠️ **Warning:** Since Medusa Didn't do dashboard updates in the v2.12.5 then we can't test the workflow yet.
+
 ## Upgrade Checklist
 
 ### Upgrading Steps
