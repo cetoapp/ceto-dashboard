@@ -1,9 +1,12 @@
 name: Automatic Dashboard Upgrade
 
 on:
-  schedule:
-    - cron: '0 7 * * 1'
   workflow_dispatch:
+    inputs:
+      current_version:
+        description: 'The "Vanilla" Medusa version you started with (e.g., v2.12.0)'
+        required: true
+        default: 'v2.12.0'
 
 jobs:
   sync-dashboard:
@@ -23,89 +26,83 @@ jobs:
           git config user.name "Medusa Sync Bot"
           git config user.email "bot@noreply.github.com"
 
-      - name: Sync Dashboard from Medusa
-        id: sync
+      - name: Sync Dashboard
         env:
           TARGET_PATH: packages/admin/dashboard
+          ANCHOR_TAG: ${{ github.event.inputs.current_version }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
-
-          # 1. Fetch Upstream Data
+          
+          # 1. Fetch Upstream Medusa Tags
           git remote add upstream-medusa https://github.com/medusajs/medusa.git || true
           git fetch upstream-medusa --tags --force
 
-          CURRENT_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 2 | head -n 1)
+          # 2. Identify the Target (Newest Version)
           TARGET_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
-          
-          # Naming the branches clearly
+
+          # Define Branch Names
           BASE_BRANCH="sync/base-$TARGET_TAG"
           HEAD_BRANCH="sync/update-$TARGET_TAG"
 
-          echo "CURRENT_TAG=$CURRENT_TAG" >> $GITHUB_ENV
-          echo "TARGET_TAG=$TARGET_TAG" >> $GITHUB_ENV
-          echo "BASE_BRANCH=$BASE_BRANCH" >> $GITHUB_ENV
-          echo "HEAD_BRANCH=$HEAD_BRANCH" >> $GITHUB_ENV
+          echo "--------------------------------"
+          echo "ANCESTOR (Old Vanilla): $ANCHOR_TAG"
+          echo "TARGET   (New Vanilla): $TARGET_TAG"
+          echo "YOUR CODE: Current content of 'main'"
+          echo "--------------------------------"
 
-          echo "Current: $CURRENT_TAG"
-          echo "Target : $TARGET_TAG"
+          # 3. Clean up old runs if they exist
+          git push origin --delete "$BASE_BRANCH" 2>/dev/null || true
+          git push origin --delete "$HEAD_BRANCH" 2>/dev/null || true
 
-          # If the base branch exists, we assume the sync is already in progress
-          if git ls-remote --exit-code --heads origin "$BASE_BRANCH"; then
-            echo "Sync branches already exist. Exiting."
-            echo "EXISTS=true" >> $GITHUB_ENV
-            exit 0
-          fi
-
-          # --- PREPARE THE PROXY BASE (The "Current" State) ---
-          # 1. Start from MAIN (your current code)
+          # ---------------------------------------------------------
+          # STEP A: Create the "Base" Branch (Your Code + History Link)
+          # ---------------------------------------------------------
           git checkout main
           git checkout -b "$BASE_BRANCH"
 
-          # 2. Create the Old Medusa Commit (The Anchor)
-          ANCHOR_ID=$(git commit-tree "$CURRENT_TAG:$TARGET_PATH" \
-            -m "Anchor: Medusa $CURRENT_TAG")
+          # Generate the "Ancestor Commit" (The Vanilla Old Version)
+          # This commit contains the exact code of Medusa at the version you started with.
+          ANCHOR_ID=$(git commit-tree "$ANCHOR_TAG:$TARGET_PATH" \
+            -m "Anchor: Vanilla Medusa $ANCHOR_TAG")
 
-          # 3. Merge Anchor into Proxy Base using 'ours'
-          # This tells Git: "Our custom main branch is a descendant of this Anchor"
-          # We use --no-commit first to ensure we can force the parentage if needed, 
-          # but usually standard merge is fine here.
-          git branch -f anchor-point "$ANCHOR_ID"
-          git merge anchor-point \
+          # Merge the Ancestor into your Base branch using 'ours' strategy.
+          # effectively saying: "Trust me, my current custom code is a child of this Anchor"
+          # We do this silently (-q) and allow unrelated histories.
+          git branch -f anchor-link "$ANCHOR_ID"
+          git merge anchor-link \
             --allow-unrelated-histories \
             -s ours \
-            -m "Chore: Link history to Medusa $CURRENT_TAG"
-          
+            -m "Chore: Link history to Vanilla $ANCHOR_TAG"
+
           git push origin "$BASE_BRANCH"
 
-          # --- PREPARE THE HEAD (The "New" State) ---
-          # 4. Create the New Medusa Commit
-          # IMPORTANT: We set the parent to the SAME Anchor ID created above.
-          # This ensures Git sees a direct path from Anchor -> New.
-          NEW_ID=$(git commit-tree "$TARGET_TAG:$TARGET_PATH" \
+          # ---------------------------------------------------------
+          # STEP B: Create the "Update" Branch (New Vanilla Version)
+          # ---------------------------------------------------------
+          # We create a commit for the NEW version, setting the ANCHOR as its parent.
+          # This creates the path: Anchor -> Target
+          TARGET_ID=$(git commit-tree "$TARGET_TAG:$TARGET_PATH" \
             -p "$ANCHOR_ID" \
             -m "Update: Medusa $TARGET_TAG")
 
-          git checkout -b "$HEAD_BRANCH" "$NEW_ID"
+          git checkout -b "$HEAD_BRANCH" "$TARGET_ID"
           git push origin "$HEAD_BRANCH"
 
-          echo "EXISTS=false" >> $GITHUB_ENV
-
-      - name: Create Pull Request
-        if: env.EXISTS == 'false'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
+          # ---------------------------------------------------------
+          # STEP C: Create the Pull Request
+          # ---------------------------------------------------------
           gh pr create \
-            --base "${{ env.BASE_BRANCH }}" \
-            --head "${{ env.HEAD_BRANCH }}" \
-            --title "feat: Sync Medusa Dashboard to ${{ env.TARGET_TAG }}" \
-            --body "**Automated dashboard sync**
+            --base "$BASE_BRANCH" \
+            --head "$HEAD_BRANCH" \
+            --title "feat: Sync Medusa Dashboard ($ANCHOR_TAG -> $TARGET_TAG)" \
+            --body "**Automated Dashboard Sync**
             
-            From: ${{ env.CURRENT_TAG }}
-            To: ${{ env.TARGET_TAG }}
+            This PR compares:
+            1. **Base:** Your code (Custom changes on top of $ANCHOR_TAG)
+            2. **Head:** New Medusa (Pure upgrade from $ANCHOR_TAG to $TARGET_TAG)
             
             ### ⚠️ Instructions
-            1. This PR shows the **true conflicts** between your code and the new Medusa version.
-            2. Resolve the conflicts using the GitHub UI or locally.
-            3. Merge this PR into the temporary base branch (\`${{ env.BASE_BRANCH }}\`).
-            4. **Final Step:** Merge \`${{ env.BASE_BRANCH }}\` into \`main\` (this will be a clean merge)."
+            1. Use the **Resolve Conflicts** button in this PR to merge your changes with the new version.
+            2. Once resolved and merged, you will have a clean \`$BASE_BRANCH\`.
+            3. Create a final PR to merge \`$BASE_BRANCH\` into \`main\`."
