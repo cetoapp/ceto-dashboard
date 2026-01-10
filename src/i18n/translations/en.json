@@ -3298,7 +3298,7 @@
   "auth": {
     "login": {
       "authenticationFailed": "Authentication failed",
-      "cloud": "Log in with Medusa Cloud"
+      "cloud": "Log in with Ceto Cloud"
     }
   }
 }
