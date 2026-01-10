@@ -12,9 +12,7 @@ This documentation outlines the step-by-step process to create and update the da
 Follow these steps to upgrade the dashboard to a newer Medusa version:
 
 ```bash
-# 1. Ensure we are clean
-git reset --hard HEAD
-
+# 1. Ensure all changes are commited
 # 2. Re-fetch tags to be safe
 git fetch upstream-medusa --tags --force
 
