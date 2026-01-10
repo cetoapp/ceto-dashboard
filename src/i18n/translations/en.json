@@ -1439,7 +1439,7 @@
       "title": "Create Refund",
       "sendNotificationHint": "Notify customers about the created refund.",
       "systemPayment": "System payment",
-      "systemPaymentDesc": "One or more of your payments is a system payment. Be aware, that captures and refunds are not handled by Medusa for such payments.",
+      "systemPaymentDesc": "One or more of your payments is a system payment. Be aware, that captures and refunds are not handled by Ceto for such payments.",
       "error": {
         "amountToLarge": "Cannot refund more than the original order amount.",
         "amountNegative": "Refund amount must be a positive number.",
@@ -2518,7 +2518,7 @@
       "manage": "Manage translations",
       "manageLocales": "Manage locales"
     },
-    "subtitle": "Manage translations of your data in Medusa",
+    "subtitle": "Manage translations of your data in Ceto",
     "list": {
       "metrics": "{{translated}} of {{total}} fields translated"
     },
