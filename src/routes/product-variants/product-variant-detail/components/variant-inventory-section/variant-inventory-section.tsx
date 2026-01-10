@@ -11,7 +11,7 @@ import { LinkButton } from "../../../../../components/common/link-button"
 import { useDataTable } from "../../../../../hooks/use-data-table"
 import { useInventoryTableColumns } from "./use-inventory-table-columns"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 type VariantInventorySectionProps = {
   inventoryItems: HttpTypes.AdminInventoryItem[]

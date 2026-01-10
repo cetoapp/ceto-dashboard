@@ -9,7 +9,7 @@ import { useReservationTableColumns } from "./use-reservation-table-columns"
 import { useReservationTableFilters } from "./use-reservation-table-filters"
 import { useReservationTableQuery } from "./use-reservation-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const ReservationListTable = () => {
   const { t } = useTranslation()

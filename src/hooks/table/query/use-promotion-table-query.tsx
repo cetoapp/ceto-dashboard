@@ -8,7 +8,7 @@ type UsePromotionTableQueryProps = {
 
 export const usePromotionTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UsePromotionTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

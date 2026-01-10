@@ -8,7 +8,7 @@ type UseSalesChannelTableQueryProps = {
 
 export const useSalesChannelTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseSalesChannelTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at", "is_disabled"],

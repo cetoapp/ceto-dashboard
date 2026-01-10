@@ -8,7 +8,7 @@ type UseCollectionTableQueryProps = {
 
 export const useCollectionTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseCollectionTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

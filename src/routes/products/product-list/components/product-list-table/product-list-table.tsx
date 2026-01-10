@@ -1,4 +1,4 @@
-import { PencilSquare, Trash } from "@medusajs/icons"
+import { GlobeEurope, PencilSquare, Trash } from "@medusajs/icons"
 import { Button, Container, Heading, toast, usePrompt } from "@medusajs/ui"
 import { keepPreviousData } from "@tanstack/react-query"
 import { createColumnHelper } from "@tanstack/react-table"
@@ -21,7 +21,7 @@ import { productsLoader } from "../../loader"
 import { useFeatureFlag } from "../../../../../providers/feature-flag-provider"
 import { ConfigurableProductListTable } from "./configurable-product-list-table"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const ProductListTable = () => {
   const { t } = useTranslation()
@@ -110,6 +110,7 @@ const ProductActions = ({ product }: { product: HttpTypes.AdminProduct }) => {
   const { t } = useTranslation()
   const prompt = usePrompt()
   const { mutateAsync } = useDeleteProduct(product.id)
+  const isTranslationsEnabled = useFeatureFlag("translation")
 
   const handleDelete = async () => {
     const res = await prompt({
@@ -153,6 +154,19 @@ const ProductActions = ({ product }: { product: HttpTypes.AdminProduct }) => {
             },
           ],
         },
+        ...(isTranslationsEnabled
+          ? [
+              {
+                actions: [
+                  {
+                    icon: <GlobeEurope />,
+                    label: t("translations.actions.manage"),
+                    to: `/settings/translations/edit?reference=product&reference_id=${product.id}`,
+                  },
+                ],
+              },
+            ]
+          : []),
         {
           actions: [
             {

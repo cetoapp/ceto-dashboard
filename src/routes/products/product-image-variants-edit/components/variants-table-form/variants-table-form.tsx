@@ -23,7 +23,7 @@ import { useProductVariantTableQuery } from "../../../../../hooks/table/query/us
 import { KeyboundForm } from "../../../../../components/utilities/keybound-form"
 import { RouteDrawer, useRouteModal } from "../../../../../components/modals"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 type VariantsTableFormProps = {
   productId: string

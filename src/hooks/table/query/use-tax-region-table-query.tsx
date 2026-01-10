@@ -7,7 +7,7 @@ type UseTaxRegionTableQueryProps = {
 
 export const useTaxRegionTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseTaxRegionTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

@@ -9,7 +9,7 @@ import { useExchangeOutboundItemTableColumns } from "./use-exchange-outbound-ite
 import { useExchangeOutboundItemTableFilters } from "./use-exchange-outbound-item-table-filters"
 import { useExchangeOutboundItemTableQuery } from "./use-exchange-outbound-item-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "rit"
 
 type AddExchangeOutboundItemsTableProps = {

@@ -15,7 +15,7 @@ export type ReturnItemTableQuery = {
 }
 
 export const useClaimItemTableQuery = ({
-  pageSize = 10,
+  pageSize = 50,
   prefix,
 }: {
   pageSize?: number

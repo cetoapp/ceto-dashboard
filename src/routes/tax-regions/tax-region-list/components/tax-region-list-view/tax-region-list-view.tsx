@@ -7,7 +7,7 @@ import { useTaxRegionTableQuery } from "../../../../../hooks/table/query/use-tax
 import { TaxRegionTable } from "../../../common/components/tax-region-table"
 import { useTaxRegionTable } from "../../../common/hooks/use-tax-region-table"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const TaxRegionListView = () => {
   const { t } = useTranslation()

@@ -13,7 +13,7 @@ import { TwoColumnPage } from "../../../components/layout/pages"
 import { useExtension } from "../../../providers/extension-provider"
 import { keepPreviousData } from "@tanstack/react-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 const PREFIX = "loc"
 
 export function LocationList() {

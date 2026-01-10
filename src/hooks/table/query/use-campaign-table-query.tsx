@@ -7,7 +7,7 @@ type UseCampaignTableQueryProps = {
 
 export const useCampaignTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseCampaignTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

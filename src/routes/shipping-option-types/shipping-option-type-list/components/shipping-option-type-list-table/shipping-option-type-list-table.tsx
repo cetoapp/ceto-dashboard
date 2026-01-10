@@ -13,7 +13,7 @@ import { useShippingOptionTypeTableQuery } from "../../../../../hooks/table/quer
 import { useDataTable } from "../../../../../hooks/use-data-table"
 import { ShippingOptionTypeRowActions } from "./shipping-option-type-table-row-actions"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const ShippingOptionTypeListTable = () => {
   const { t } = useTranslation()

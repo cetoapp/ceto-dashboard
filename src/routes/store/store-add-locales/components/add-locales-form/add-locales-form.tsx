@@ -28,7 +28,7 @@ const AddLocalesSchema = z.object({
   locales: z.array(z.string()).min(1),
 })
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "al"
 
 export const AddLocalesForm = ({ store }: AddLocalesFormProps) => {
@@ -100,19 +100,10 @@ export const AddLocalesForm = ({ store }: AddLocalesFormProps) => {
       new Set([...data.locales, ...preSelectedRows])
     ) as string[]
 
-    let defaultLocale = store.supported_locales?.find(
-      (l) => l.is_default
-    )?.locale_code
-
-    if (!locales.includes(defaultLocale ?? "")) {
-      defaultLocale = locales?.[0]
-    }
-
     await mutateAsync(
       {
         supported_locales: locales.map((l) => ({
           locale_code: l,
-          is_default: l === defaultLocale,
         })),
       },
       {

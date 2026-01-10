@@ -16,7 +16,7 @@ import { useReturnItemTableColumns } from "./use-return-item-table-columns"
 import { useReturnItemTableFilters } from "./use-return-item-table-filters"
 import { useReturnItemTableQuery } from "./use-return-item-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "rit"
 
 type AddReturnItemsTableProps = {

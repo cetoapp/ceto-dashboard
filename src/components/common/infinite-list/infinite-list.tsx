@@ -24,7 +24,7 @@ export const InfiniteList = <
   renderItem,
   renderEmpty,
   responseKey,
-  pageSize = 10,
+  pageSize = 20,
 }: InfiniteListProps<TResponse, TEntity, TParams>) => {
   const {
     data,

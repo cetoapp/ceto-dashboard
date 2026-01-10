@@ -25,7 +25,7 @@ const EditSalesChannelsSchema = zod.object({
   sales_channels: zod.array(zod.string()).optional(),
 })
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "sc"
 
 export const EditSalesChannelsForm = ({

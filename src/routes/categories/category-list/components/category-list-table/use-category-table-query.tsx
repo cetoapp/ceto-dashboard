@@ -1,7 +1,7 @@
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const useCategoryTableQuery = ({
-  pageSize = 10,
+  pageSize = 20,
   prefix,
 }: {
   pageSize?: number

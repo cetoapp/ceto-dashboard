@@ -1,4 +1,4 @@
-export const PAGE_SIZE = 10
+export const PAGE_SIZE = 20
 export const DEFAULT_COLUMN_ORDER = 500
 export const QUERY_PREFIX = "o"
 

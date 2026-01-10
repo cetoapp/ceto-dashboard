@@ -13,7 +13,7 @@ import { useInventoryTableColumns } from "./use-inventory-table-columns"
 import { useInventoryTableFilters } from "./use-inventory-table-filters"
 import { useInventoryTableQuery } from "./use-inventory-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const InventoryListTable = () => {
   const { t } = useTranslation()

@@ -11,7 +11,7 @@ import {
 } from "./use-reservation-list-table-columns"
 import { useReservationsTableQuery } from "./use-reservation-list-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const ReservationItemTable = ({
   inventoryItem,

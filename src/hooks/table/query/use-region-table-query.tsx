@@ -8,7 +8,7 @@ type UseRegionTableQueryProps = {
 
 export const useRegionTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseRegionTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

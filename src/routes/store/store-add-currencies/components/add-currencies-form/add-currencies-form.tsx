@@ -36,7 +36,7 @@ const AddCurrenciesSchema = zod.object({
   pricePreferences: zod.record(zod.boolean()),
 })
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "ac"
 
 export const AddCurrenciesForm = ({

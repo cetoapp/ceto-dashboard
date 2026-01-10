@@ -12,7 +12,7 @@ import { useDataTableDateFilters } from "../../../../../components/data-table/he
 import { useUsers } from "../../../../../hooks/api/users"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const UserListTable = () => {
   const { q, order, offset } = useQueryParams(["q", "order", "offset"])

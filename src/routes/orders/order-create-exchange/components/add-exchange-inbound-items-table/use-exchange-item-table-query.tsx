@@ -1,7 +1,7 @@
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const useExchangeItemTableQuery = ({
-  pageSize = 10,
+  pageSize = 50,
   prefix,
 }: {
   pageSize?: number

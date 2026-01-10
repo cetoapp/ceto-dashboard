@@ -2,7 +2,7 @@ import { HttpTypes, PriceListStatus } from "@medusajs/types"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const usePricingTableQuery = ({
-  pageSize = 10,
+  pageSize = 20,
   prefix,
 }: {
   pageSize?: number

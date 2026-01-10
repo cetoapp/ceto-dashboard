@@ -18,7 +18,7 @@ import {
 import { useRefundReasonTableColumns } from "../../../../../hooks/table/columns"
 import { useRefundReasonTableQuery } from "../../../../../hooks/table/query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const RefundReasonListTable = () => {
   const { t } = useTranslation()

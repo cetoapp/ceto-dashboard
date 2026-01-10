@@ -32,7 +32,7 @@ const AddProductsToCollectionSchema = zod.object({
   add: zod.array(zod.string()).min(1),
 })
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "p"
 
 export const AddProductsToCollectionForm = ({

@@ -9,7 +9,7 @@ import { useApiKeyManagementTableColumns } from "./use-api-key-management-table-
 import { useApiKeyManagementTableFilters } from "./use-api-key-management-table-filters"
 import { useApiKeyManagementTableQuery } from "./use-api-key-management-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const ApiKeyManagementListTable = ({
   keyType,

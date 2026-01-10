@@ -8,7 +8,7 @@ type UseOrderTableQueryProps = {
 
 export const useOrderTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseOrderTableQueryProps) => {
   const queryObject = useQueryParams(
     [

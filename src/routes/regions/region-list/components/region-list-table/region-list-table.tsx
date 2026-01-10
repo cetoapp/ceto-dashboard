@@ -22,7 +22,7 @@ import { useRegionTableFilters } from "../../../../../hooks/table/filters/use-re
 import { useRegionTableQuery } from "../../../../../hooks/table/query/use-region-table-query"
 import { useDataTable } from "../../../../../hooks/use-data-table"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const RegionListTable = () => {
   const { t } = useTranslation()

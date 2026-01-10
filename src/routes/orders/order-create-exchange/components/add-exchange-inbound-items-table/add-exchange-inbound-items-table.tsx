@@ -10,7 +10,7 @@ import { useExchangeItemTableColumns } from "./use-exchange-item-table-columns"
 import { useExchangeItemTableFilters } from "./use-exchange-item-table-filters"
 import { useExchangeItemTableQuery } from "./use-exchange-item-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "rit"
 
 type AddExchangeInboundItemsTableProps = {

@@ -16,7 +16,7 @@ import { useCampaignTableColumns } from "../../../../hooks/table/columns/use-cam
 import { useCampaignTableQuery } from "../../../../hooks/table/query/use-campaign-table-query"
 import { useDataTable } from "../../../../hooks/use-data-table"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const CampaignListTable = () => {
   const { t } = useTranslation()

@@ -9,7 +9,7 @@ import { useOrderEditItemsTableColumns } from "./use-order-edit-item-table-colum
 import { useOrderEditItemTableFilters } from "./use-order-edit-item-table-filters"
 import { useOrderEditItemTableQuery } from "./use-order-edit-item-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "rit"
 
 type AddExchangeOutboundItemsTableProps = {

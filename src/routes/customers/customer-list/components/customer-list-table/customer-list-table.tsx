@@ -15,7 +15,7 @@ import { useCustomerTableFilters } from "../../../../../hooks/table/filters/use-
 import { useCustomerTableQuery } from "../../../../../hooks/table/query/use-customer-table-query"
 import { useDataTable } from "../../../../../hooks/use-data-table"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const CustomerListTable = () => {
   const { t } = useTranslation()

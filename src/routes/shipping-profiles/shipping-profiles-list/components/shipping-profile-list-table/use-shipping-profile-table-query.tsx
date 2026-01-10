@@ -1,7 +1,7 @@
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const useShippingProfileTableQuery = ({
-  pageSize = 10,
+  pageSize = 20,
   prefix,
 }: {
   pageSize?: number

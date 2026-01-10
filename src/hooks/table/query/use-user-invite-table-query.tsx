@@ -7,7 +7,7 @@ type UseUserInviteTableQueryProps = {
 
 export const useUserInviteTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseUserInviteTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

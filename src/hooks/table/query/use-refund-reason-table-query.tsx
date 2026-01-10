@@ -8,7 +8,7 @@ type UseRefundReasonTableQueryProps = {
 
 export const useRefundReasonTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseRefundReasonTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

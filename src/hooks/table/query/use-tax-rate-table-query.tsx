@@ -8,7 +8,7 @@ type UseTaxRateTableQueryProps = {
 
 export const useTaxRateTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseTaxRateTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

@@ -8,7 +8,7 @@ type UseFulfillmentProviderTableQueryProps = {
 
 export const useFulfillmentProvidersTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseFulfillmentProviderTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "stock_location_id"],

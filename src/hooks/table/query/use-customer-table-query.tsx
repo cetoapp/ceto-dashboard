@@ -8,7 +8,7 @@ type UseCustomerTableQueryProps = {
 
 export const useCustomerTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseCustomerTableQueryProps) => {
   const queryObject = useQueryParams(
     [

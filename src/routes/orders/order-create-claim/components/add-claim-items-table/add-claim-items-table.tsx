@@ -15,7 +15,7 @@ import { useClaimItemTableColumns } from "./use-claim-item-table-columns"
 import { useClaimItemTableFilters } from "./use-claim-item-table-filters"
 import { useClaimItemTableQuery } from "./use-claim-item-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "rit"
 
 type AddReturnItemsTableProps = {

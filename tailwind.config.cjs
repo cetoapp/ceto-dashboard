@@ -1,5 +1,6 @@
 const path = require("path")
 
+// get the path of the dependency "@medusajs/ui"
 const medusaUI = path.join(
   path.dirname(require.resolve("@medusajs/ui")),
   "**/*.{js,jsx,ts,tsx}"
@@ -11,8 +12,7 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", medusaUI],
   darkMode: "class",
   theme: {
-    extend: {
-    }
+    extend: {},
   },
   plugins: [],
 }

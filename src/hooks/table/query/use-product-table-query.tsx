@@ -12,7 +12,7 @@ const DEFAULT_FIELDS =
 
 export const useProductTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseProductTableQueryProps) => {
   const queryObject = useQueryParams(
     [

@@ -33,7 +33,7 @@ const EditCategoryProductsSchema = z.object({
   product_ids: z.array(z.string()),
 })
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "p"
 
 export const EditCategoryProductsForm = ({

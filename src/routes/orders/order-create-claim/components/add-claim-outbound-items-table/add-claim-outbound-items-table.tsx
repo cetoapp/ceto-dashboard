@@ -9,7 +9,7 @@ import { useClaimOutboundItemTableColumns } from "./use-claim-outbound-item-tabl
 import { useClaimOutboundItemTableFilters } from "./use-claim-outbound-item-table-filters"
 import { useClaimOutboundItemTableQuery } from "./use-claim-outbound-item-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 const PREFIX = "rit"
 
 type AddClaimOutboundItemsTableProps = {

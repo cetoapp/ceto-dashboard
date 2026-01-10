@@ -8,7 +8,7 @@ type UseShippingOptionTypeTableQueryProps = {
 
 export const useShippingOptionTypeTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseShippingOptionTypeTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

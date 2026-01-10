@@ -138,7 +138,7 @@ type TableImplementationProps = {
   setIntermediate: (state: TaxRateRuleReference[]) => void
 }
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 50
 
 const PREFIX_CUSTOMER_GROUP = "cg"
 

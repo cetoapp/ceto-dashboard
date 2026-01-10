@@ -8,7 +8,7 @@ type UseCustomerGroupTableQueryProps = {
 
 export const useCustomerGroupTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseCustomerGroupTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "has_account", "order", "created_at", "updated_at"],

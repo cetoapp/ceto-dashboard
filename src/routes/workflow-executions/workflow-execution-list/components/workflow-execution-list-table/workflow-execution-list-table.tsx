@@ -7,7 +7,7 @@ import { useDataTable } from "../../../../../hooks/use-data-table"
 import { useWorkflowExecutionTableColumns } from "./use-workflow-execution-table-columns"
 import { useWorkflowExecutionTableQuery } from "./use-workflow-execution-table-query"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
 export const WorkflowExecutionListTable = () => {
   const { t } = useTranslation()

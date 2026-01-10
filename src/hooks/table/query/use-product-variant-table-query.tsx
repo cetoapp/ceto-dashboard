@@ -8,7 +8,7 @@ type UseProductTagTableQueryProps = {
 
 export const useProductVariantTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseProductTagTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "order", "created_at", "updated_at"],

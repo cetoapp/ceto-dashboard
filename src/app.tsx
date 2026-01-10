@@ -28,7 +28,7 @@ function App({ plugins = [] }: AppProps) {
     plugins: [localPlugin, ...plugins],
   })
 
-  return <div className="app">{app.render()}</div>
+  return <div>{app.render()}</div>
 }
 
 export default App

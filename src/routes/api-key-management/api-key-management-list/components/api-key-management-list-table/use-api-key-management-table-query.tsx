@@ -8,7 +8,7 @@ type UseApiKeyManagementTableQueryProps = {
 
 export const useApiKeyManagementTableQuery = ({
   prefix,
-  pageSize = 10,
+  pageSize = 20,
 }: UseApiKeyManagementTableQueryProps) => {
   const queryObject = useQueryParams(
     ["offset", "q", "created_at", "updated_at", "revoked_at", "order"],
