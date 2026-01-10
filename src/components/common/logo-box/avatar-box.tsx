@@ -1,10 +1,15 @@
 import { IconAvatar } from "../icon-avatar";
 import CetoLogo from "../../../assets/images/white-logo.svg";
 
-export default function AvatarBox({ checked }: { checked?: boolean }) {
+type AvatarBoxProps = {
+  checked?: boolean
+  size?: "small" | "xlarge" | "large"
+}
+
+export default function AvatarBox({ checked, size }: AvatarBoxProps) {
   return (
     <IconAvatar
-      size="xlarge"
+      size={size || "xlarge"}
       className="bg-ui-button-neutral shadow-buttons-neutral after:button-neutral-gradient relative mb-4 flex h-[50px] w-[50px] items-center justify-center rounded-xl after:inset-0 after:content-['']"
     >
       {checked && (
