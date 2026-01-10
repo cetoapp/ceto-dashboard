@@ -30,69 +30,64 @@ jobs:
         run: |
           set -e
 
+          # 1. Fetch Upstream Data
           git remote add upstream-medusa https://github.com/medusajs/medusa.git || true
           git fetch upstream-medusa --tags --force
 
           CURRENT_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 2 | head -n 1)
           TARGET_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
           
-          # For testing, you might want to hardcode these if tags aren't resolving correctly
-          # CURRENT_TAG="v2.12.4"
-          # TARGET_TAG="v2.12.5"
+          # Naming the branches clearly
+          BASE_BRANCH="sync/base-$TARGET_TAG"
+          HEAD_BRANCH="sync/update-$TARGET_TAG"
 
-          BRANCH="update-$TARGET_TAG"
-
-          # Export variables for the next step
           echo "CURRENT_TAG=$CURRENT_TAG" >> $GITHUB_ENV
           echo "TARGET_TAG=$TARGET_TAG" >> $GITHUB_ENV
-          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+          echo "BASE_BRANCH=$BASE_BRANCH" >> $GITHUB_ENV
+          echo "HEAD_BRANCH=$HEAD_BRANCH" >> $GITHUB_ENV
 
           echo "Current: $CURRENT_TAG"
           echo "Target : $TARGET_TAG"
-          echo "Branch : $BRANCH"
 
-          # Check if remote branch exists
-          if git ls-remote --exit-code --heads origin "$BRANCH"; then
-            echo "Branch $BRANCH already exists on remote."
-            # We exit successfully here, assuming if the branch exists, the PR likely does too.
-            # If you want to update an existing branch, remove this block.
+          # If the base branch exists, we assume the sync is already in progress
+          if git ls-remote --exit-code --heads origin "$BASE_BRANCH"; then
+            echo "Sync branches already exist. Exiting."
             echo "EXISTS=true" >> $GITHUB_ENV
             exit 0
           fi
 
-          git checkout -b "$BRANCH"
+          # --- PREPARE THE PROXY BASE (The "Current" State) ---
+          # 1. Start from MAIN (your current code)
+          git checkout main
+          git checkout -b "$BASE_BRANCH"
 
-          # --- Fake ancestor commit ---
-          # We create a history disconnect here deliberately
-          BASE_ID=$(git commit-tree "$CURRENT_TAG:$TARGET_PATH" \
-            -m "Base History ($CURRENT_TAG)")
+          # 2. Create the Old Medusa Commit (The Anchor)
+          ANCHOR_ID=$(git commit-tree "$CURRENT_TAG:$TARGET_PATH" \
+            -m "Anchor: Medusa $CURRENT_TAG")
 
-          git branch -f base-history "$BASE_ID"
-          git merge base-history \
+          # 3. Merge Anchor into Proxy Base using 'ours'
+          # This tells Git: "Our custom main branch is a descendant of this Anchor"
+          # We use --no-commit first to ensure we can force the parentage if needed, 
+          # but usually standard merge is fine here.
+          git branch -f anchor-point "$ANCHOR_ID"
+          git merge anchor-point \
             --allow-unrelated-histories \
             -s ours \
-            -m "Chore: Link Medusa history ($CURRENT_TAG)"
+            -m "Chore: Link history to Medusa $CURRENT_TAG"
+          
+          git push origin "$BASE_BRANCH"
 
-          # --- Target update commit ---
-          TARGET_ID=$(git commit-tree "$TARGET_TAG:$TARGET_PATH" \
-            -m "Update Target ($TARGET_TAG)")
+          # --- PREPARE THE HEAD (The "New" State) ---
+          # 4. Create the New Medusa Commit
+          # IMPORTANT: We set the parent to the SAME Anchor ID created above.
+          # This ensures Git sees a direct path from Anchor -> New.
+          NEW_ID=$(git commit-tree "$TARGET_TAG:$TARGET_PATH" \
+            -p "$ANCHOR_ID" \
+            -m "Update: Medusa $TARGET_TAG")
 
-          git branch -f update-target "$TARGET_ID"
+          git checkout -b "$HEAD_BRANCH" "$NEW_ID"
+          git push origin "$HEAD_BRANCH"
 
-          # Allow conflicts
-          set +e
-          git merge update-target \
-            --allow-unrelated-histories \
-            -m "Update: Sync Dashboard to $TARGET_TAG"
-          set -e
-
-          # Commit conflicted state so PR can show conflicts
-          # We purposefully ignore errors here in case there are no conflicts
-          git add -A
-          git commit -m "WIP: Resolve conflicts for Medusa $TARGET_TAG" || true
-
-          # Push the branch manually
-          git push origin "$BRANCH"
           echo "EXISTS=false" >> $GITHUB_ENV
 
       - name: Create Pull Request
@@ -101,12 +96,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
-            --base main \
-            --head "${{ env.BRANCH }}" \
-            --title "feat: Sync Medusa Dashboard to ${{ env.BRANCH }}" \
+            --base "${{ env.BASE_BRANCH }}" \
+            --head "${{ env.HEAD_BRANCH }}" \
+            --title "feat: Sync Medusa Dashboard to ${{ env.TARGET_TAG }}" \
             --body "**Automated dashboard sync**
             
             From: ${{ env.CURRENT_TAG }}
             To: ${{ env.TARGET_TAG }}
             
-            ⚠️ This PR contains merge conflicts that require manual resolution."
+            ### ⚠️ Instructions
+            1. This PR shows the **true conflicts** between your code and the new Medusa version.
+            2. Resolve the conflicts using the GitHub UI or locally.
+            3. Merge this PR into the temporary base branch (\`${{ env.BASE_BRANCH }}\`).
+            4. **Final Step:** Merge \`${{ env.BASE_BRANCH }}\` into \`main\` (this will be a clean merge)."
