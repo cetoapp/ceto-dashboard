@@ -63,9 +63,17 @@ jobs:
             -m "Update Target ($TARGET_TAG)")
 
           git branch -f update-target "$TARGET_ID"
+
+          # 🔥 Allow conflicts without failing the workflow
+          set +e
           git merge update-target \
             --allow-unrelated-histories \
             -m "Update: Sync Dashboard to $TARGET_TAG"
+          set -e
+
+          # ✅ Commit conflicted state so PR can show conflicts
+          git add -A
+          git commit -m "WIP: Resolve conflicts for Medusa $TARGET_TAG" || true
 
           git push origin "$BRANCH"
 
@@ -73,4 +81,4 @@ jobs:
             --base main \
             --head "$BRANCH" \
             --title "feat: Sync Medusa Dashboard to $TARGET_TAG" \
-            --body "**Automated dashboard sync**\n\nFrom: $CURRENT_TAG\nTo: $TARGET_TAG"
+            --body "**Automated dashboard sync**\n\nFrom: $CURRENT_TAG\nTo: $TARGET_TAG\n\n⚠️ This PR contains merge conflicts that require manual resolution."
