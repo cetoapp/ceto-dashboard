@@ -1,8 +1,8 @@
-name: Sync Medusa Dashboard (Direct Tree)
+name: Automatic Dashboard Upgrade
 
 on:
   schedule:
-    - cron: '0 7 * * *' # Run daily at 07:00 UTC
+    - cron: '0 7 * * 1' # Run weekly on Monday at 07:00 UTC
   workflow_dispatch: # Allows manual trigger
 
 jobs:
@@ -45,9 +45,9 @@ jobs:
           echo "✅ Found target path: $TARGET_PATH"
 
           # Get the Tree SHA of the folder directly (bypassing subtree logic)
-          TREE_SHA=$(git rev-parse "upstream/$LATEST_TAG:$TARGET_PATH")
+          TREE_SHA=$(git rev-parse "$LATEST_TAG:$TARGET_PATH")
           
-          # Create a commit object from that tree (orphaned commit, exactly like your manual fix)
+          # Create a commit object from that tree (orphaned commit)
           NEW_COMMIT_ID=$(git commit-tree -m "Sync: Update Medusa Dashboard to $LATEST_TAG" "$TREE_SHA")
           
           echo "Created new sync commit: $NEW_COMMIT_ID"
@@ -60,4 +60,4 @@ jobs:
             --base main \
             --head "update-$LATEST_TAG" \
             --title "feat: Update Medusa Dashboard to $LATEST_TAG" \
-            --body "Automated sync using Direct Tree Strategy.\n\n**Version:** $LATEST_TAG\n**Source:** $TARGET_PATH\n\nSince this uses the 'unrelated history' method, you may need to use '--allow-unrelated-histories' if merging locally, though GitHub UI should handle it."
+            --body "Automated sync using Direct Tree Strategy.\n\n**Version:** $LATEST_TAG\n**Source:** $TARGET_PATH"
