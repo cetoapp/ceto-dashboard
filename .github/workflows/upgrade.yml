@@ -41,19 +41,9 @@ jobs:
             echo "Branch 'update-$LATEST_TAG' already exists. Exiting."
             exit 0
           fi
-
-          # 4. PATH DETECTION (Smart check)
-          # We check if the 'dashboard' folder object exists in the tag
-          if git rev-parse --verify "upstream/$LATEST_TAG:packages/admin/dashboard" >/dev/null 2>&1; then
-             TARGET_PATH="packages/admin/dashboard"
-          else
-             echo "❌ Error: Could not find dashboard folder in $LATEST_TAG"
-             exit 1
-          fi
           
           echo "✅ Found target path: $TARGET_PATH"
 
-          # 5. THE "NUCLEAR" FIX (Commit-Tree Strategy)
           # Get the Tree SHA of the folder directly (bypassing subtree logic)
           TREE_SHA=$(git rev-parse "upstream/$LATEST_TAG:$TARGET_PATH")
           
