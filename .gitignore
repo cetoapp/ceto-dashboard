@@ -7,14 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+<<<<<<< HEAD
 .yarn
+=======
+>>>>>>> update-target
 node_modules
 dist
 dist-ssr
 *.local
 
+<<<<<<< HEAD
 .env
 .env.*
+=======
+>>>>>>> update-target
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

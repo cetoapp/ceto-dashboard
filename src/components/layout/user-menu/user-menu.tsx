@@ -1,8 +1,16 @@
 import {
+<<<<<<< HEAD
+=======
+  BookOpen,
+>>>>>>> update-target
   CircleHalfSolid,
   EllipsisHorizontal,
   Keyboard,
   OpenRectArrowOut,
+<<<<<<< HEAD
+=======
+  TimelineVertical,
+>>>>>>> update-target
   User as UserIcon,
   XMark,
 } from "@medusajs/icons"
@@ -56,6 +64,22 @@ export const UserMenu = () => {
             </Link>
           </DropdownMenu.Item>
           <DropdownMenu.Separator />
+<<<<<<< HEAD
+=======
+          <DropdownMenu.Item asChild>
+            <Link to="https://docs.medusajs.com" target="_blank">
+              <BookOpen className="text-ui-fg-subtle me-2" />
+              {t("app.menus.user.documentation")}
+            </Link>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item asChild>
+            <Link to="https://medusajs.com/changelog/" target="_blank">
+              <TimelineVertical className="text-ui-fg-subtle me-2" />
+              {t("app.menus.user.changelog")}
+            </Link>
+          </DropdownMenu.Item>
+          <DropdownMenu.Separator />
+>>>>>>> update-target
           <DropdownMenu.Item onClick={toggleModal}>
             <Keyboard className="text-ui-fg-subtle me-2" />
             {t("app.menus.user.shortcuts")}

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "ceto-dashboard",
   "version": "0.3.0",
   "scripts": {
@@ -8,6 +9,17 @@
     "build:preview": "./node_modules/.bin/vite build",
     "preview": "./node_modules/.bin/vite preview",
     "test": "./node_modules/.bin/vitest --run",
+=======
+  "name": "@medusajs/dashboard",
+  "version": "2.12.4",
+  "scripts": {
+    "generate:static": "node ./scripts/generate-currencies.js && prettier --write ./src/lib/currencies.ts",
+    "dev": "../../../node_modules/.bin/vite",
+    "build": "yarn run -T tsup && node ./scripts/generate-types.js",
+    "build:preview": "../../../node_modules/.bin/vite build",
+    "preview": "../../../node_modules/.bin/vite preview",
+    "test": "../../../node_modules/.bin/vitest --run",
+>>>>>>> update-target
     "i18n:validate": "node ./scripts/i18n/validate-translation.js",
     "i18n:schema": "node ./scripts/i18n/generate-schema.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
@@ -28,6 +40,14 @@
     "./root": "./",
     "./package.json": "./package.json"
   },
+<<<<<<< HEAD
+=======
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medusajs/medusa",
+    "directory": "packages/admin/dashboard"
+  },
+>>>>>>> update-target
   "files": [
     "package.json",
     "src",
@@ -78,6 +98,7 @@
     "@medusajs/admin-shared": "2.12.4",
     "@medusajs/admin-vite-plugin": "2.12.4",
     "@medusajs/types": "2.12.4",
+<<<<<<< HEAD
     "@medusajs/ui-preset": "2.12.4",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
@@ -89,6 +110,9 @@
     "typescript": "^5.9.3",
     "vite": "^7.3.0",
     "vite-plugin-inspect": "^11.3.3"
+=======
+    "@medusajs/ui-preset": "2.12.4"
+>>>>>>> update-target
   },
   "packageManager": "yarn@3.2.1"
 }

@@ -1351,7 +1351,11 @@
       "title": "创建退款",
       "sendNotificationHint": "通知客户关于已创建的退款。",
       "systemPayment": "系统支付",
+<<<<<<< HEAD
       "systemPaymentDesc": "您的一个或多个支付是系统支付。请注意，Ceto 不会处理此类支付的收取和退款。",
+=======
+      "systemPaymentDesc": "您的一个或多个支付是系统支付。请注意，Medusa 不会处理此类支付的收取和退款。",
+>>>>>>> update-target
       "error": {
         "amountToLarge": "不能退款超过原始订单金额。",
         "amountNegative": "退款金额必须为正数。",
@@ -2326,7 +2330,11 @@
       "header": "编辑个人资料",
       "languageHint": "您希望在管理仪表板中使用的语言。这不会更改您的商店的语言。",
       "languagePlaceholder": "选择语言",
+<<<<<<< HEAD
       "usageInsightsHint": "分享使用见解并帮助我们改进 Ceto。您可以在我们的 <0>文档</0> 中了解更多关于我们收集和使用数据的信息。"
+=======
+      "usageInsightsHint": "分享使用见解并帮助我们改进 Medusa。您可以在我们的 <0>文档</0> 中了解更多关于我们收集和使用数据的信息。"
+>>>>>>> update-target
     },
     "toast": {
       "edit": "个人资料更改已保存"
@@ -2721,7 +2729,11 @@
   },
   "workflowExecutions": {
     "domain": "工作流",
+<<<<<<< HEAD
     "subtitle": "查看和跟踪您的 Ceto 应用程序中的工作流执行情况。",
+=======
+    "subtitle": "查看和跟踪您的 Medusa 应用程序中的工作流执行情况。",
+>>>>>>> update-target
     "transactionIdLabel": "交易 ID",
     "workflowIdLabel": "工作流 ID",
     "progressLabel": "进度",
@@ -2812,7 +2824,11 @@
       "description": "您目前没有任何通知,但一旦有通知它们将显示在这里。"
     },
     "accessibility": {
+<<<<<<< HEAD
       "description": "关于 Ceto 活动的通知将在此处列出。"
+=======
+      "description": "关于 Medusa 活动的通知将在此处列出。"
+>>>>>>> update-target
     }
   },
   "errors": {

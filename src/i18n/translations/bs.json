@@ -1352,7 +1352,11 @@
       "title": "Kreiraj povrat",
       "sendNotificationHint": "Obavijestite kupce o kreiranom povratu.",
       "systemPayment": "Sistemska uplata",
+<<<<<<< HEAD
       "systemPaymentDesc": "Jedna ili više vaših uplata je sistenska uplata. Budite svjesni da Ceto ne upravlja obradom uplata i povrata za takve uplate.",
+=======
+      "systemPaymentDesc": "Jedna ili više vaših uplata je sistenska uplata. Budite svjesni da Medusa ne upravlja obradom uplata i povrata za takve uplate.",
+>>>>>>> update-target
       "error": {
         "amountToLarge": "Nije moguće vratiti više od originalnog iznosa narudžbe.",
         "amountNegative": "Iznos povrata mora biti pozitivan broj.",
@@ -2580,7 +2584,11 @@
       "createPublishableHeader": "Kreiraj javni API ključ",
       "createPublishableHint": "Kreirajte novi javni API ključ kako biste ograničili opseg zahtjeva na određene prodajne kanale.",
       "createSecretHeader": "Kreiraj tajni API ključ",
+<<<<<<< HEAD
       "createSecretHint": "Kreirajte novi tajni API ključ za pristup Ceto API-ju kao autentifikovani administrativni korisnik.",
+=======
+      "createSecretHint": "Kreirajte novi tajni API ključ za pristup Medusa API-ju kao autentifikovani administrativni korisnik.",
+>>>>>>> update-target
       "secretKeyCreatedHeader": "Tajni ključ kreiran",
       "secretKeyCreatedHint": "Vaš novi tajni ključ je generisan. Kopirajte ga i sigurno sačuvajte sada. Ovo je jedini put kada će biti prikazan.",
       "copySecretTokenSuccess": "Tajni ključ je uspješno kopiran u međuspremnik.",
@@ -2674,11 +2682,19 @@
   },
   "login": {
     "forgotPassword": "Zaboravili ste lozinku? - <0>Poništi</0>",
+<<<<<<< HEAD
     "title": "Dobrodošli u Ceto",
     "hint": "Prijavite se da biste pristupili korisničkom području"
   },
   "invite": {
     "title": "Dobrodošli u Ceto",
+=======
+    "title": "Dobrodošli u Medusa",
+    "hint": "Prijavite se da biste pristupili korisničkom području"
+  },
+  "invite": {
+    "title": "Dobrodošli u Medusa",
+>>>>>>> update-target
     "hint": "Kreirajte svoj račun ispod",
     "backToLogin": "Povratak na prijavu",
     "createAccount": "Kreiraj račun",
@@ -2686,8 +2702,13 @@
     "emailTooltip": "Vaš email se ne može mijenjati. Ako želite koristiti drugi email, mora se poslati nova pozivnica.",
     "invalidInvite": "Pozivnica je nevažeća ili je istekao rok.",
     "successTitle": "Vaš račun je registriran",
+<<<<<<< HEAD
     "successHint": "Počnite odmah s Ceto Admin.",
     "successAction": "Započnite Ceto Admin",
+=======
+    "successHint": "Počnite odmah s Medusa Admin.",
+    "successAction": "Započnite Medusa Admin",
+>>>>>>> update-target
     "invalidTokenTitle": "Vaš pozivni token je nevažeći",
     "invalidTokenHint": "Pokušajte zatražiti novi pozivni link.",
     "passwordMismatch": "Lozinke se ne podudaraju",
@@ -2720,7 +2741,11 @@
   },
   "workflowExecutions": {
     "domain": "Radni tokovi",
+<<<<<<< HEAD
     "subtitle": "Pregledajte i pratite izvršenja radnih tokova u vašoj Ceto aplikaciji.",
+=======
+    "subtitle": "Pregledajte i pratite izvršenja radnih tokova u vašoj Medusa aplikaciji.",
+>>>>>>> update-target
     "transactionIdLabel": "ID transakcije",
     "workflowIdLabel": "ID radnog toka",
     "progressLabel": "Napredak",
@@ -2811,7 +2836,11 @@
       "description": "Nemate obavijesti u ovom trenutku, ali kada ih budete imali, bit će ovdje."
     },
     "accessibility": {
+<<<<<<< HEAD
       "description": "Obavijesti o Ceto aktivnostima bit će ovdje prikazane."
+=======
+      "description": "Obavijesti o Medusa aktivnostima bit će ovdje prikazane."
+>>>>>>> update-target
     }
   },
   "errors": {

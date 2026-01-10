@@ -1351,7 +1351,11 @@
       "title": "צור החזר",
       "sendNotificationHint": "הודע ללקוחות על ההחזר שנוצר.",
       "systemPayment": "תשלום מערכת",
+<<<<<<< HEAD
       "systemPaymentDesc": "אחד או יותר מהתשלומים שלך הוא תשלום מערכת. שים לב, תפיסות והחזרים אינם מנוהלים על ידי Ceto עבור תשלומים אלו.",
+=======
+      "systemPaymentDesc": "אחד או יותר מהתשלומים שלך הוא תשלום מערכת. שים לב, תפיסות והחזרים אינם מנוהלים על ידי Medusa עבור תשלומים אלו.",
+>>>>>>> update-target
       "error": {
         "amountToLarge": "לא ניתן להחזיר יותר מסכום ההזמנה המקורי.",
         "amountNegative": "סכום ההחזר חייב להיות מספר חיובי.",
@@ -2326,7 +2330,11 @@
       "header": "ערוך פרופיל",
       "languageHint": "השפה שברצונך להשתמש בלוח הבקרה של המנהל. זה לא משנה את שפת החנות שלך.",
       "languagePlaceholder": "בחר שפה",
+<<<<<<< HEAD
       "usageInsightsHint": "שתף תובנות שימוש ועזור לנו לשפר את Ceto. ניתן לקרוא עוד על מה אנו אוספים ואיך אנו משתמשים בזה ב<0>התיעוד</0> שלנו."
+=======
+      "usageInsightsHint": "שתף תובנות שימוש ועזור לנו לשפר את Medusa. ניתן לקרוא עוד על מה אנו אוספים ואיך אנו משתמשים בזה ב<0>התיעוד</0> שלנו."
+>>>>>>> update-target
     },
     "toast": {
       "edit": "השינויים בפרופיל נשמרו"
@@ -2581,7 +2589,11 @@
       "createPublishableHeader": "צור מפתח API לפרסום",
       "createPublishableHint": "צור מפתח API חדש לפרסום כדי להגביל את היקף הבקשות לערוצי מכירה ספציפיים.",
       "createSecretHeader": "צור מפתח API סודי",
+<<<<<<< HEAD
       "createSecretHint": "צור מפתח API סודי חדש לגישה ל-Ceto API כמשתמש מנהל מאומת.",
+=======
+      "createSecretHint": "צור מפתח API סודי חדש לגישה ל-Medusa API כמשתמש מנהל מאומת.",
+>>>>>>> update-target
       "secretKeyCreatedHeader": "מפתח סודי נוצר",
       "secretKeyCreatedHint": "המפתח הסודי החדש שלך נוצר. העתק ואחסן אותו בצורה מאובטחת עכשיו. זו הפעם היחידה שהוא יוצג.",
       "copySecretTokenSuccess": "המפתח הסודי הועתק ללוח.",
@@ -2675,11 +2687,19 @@
   },
   "login": {
     "forgotPassword": "שכחת סיסמה? - <0>איפוס</0>",
+<<<<<<< HEAD
     "title": "ברוכים הבאים ל-Ceto",
     "hint": "התחבר כדי לגשת לאזור החשבון"
   },
   "invite": {
     "title": "ברוכים הבאים ל-Ceto",
+=======
+    "title": "ברוכים הבאים ל-Medusa",
+    "hint": "התחבר כדי לגשת לאזור החשבון"
+  },
+  "invite": {
+    "title": "ברוכים הבאים ל-Medusa",
+>>>>>>> update-target
     "hint": "צור את החשבון שלך למטה",
     "backToLogin": "חזרה להתחברות",
     "createAccount": "צור חשבון",
@@ -2687,8 +2707,13 @@
     "emailTooltip": "לא ניתן לשנות את האימייל שלך. אם ברצונך להשתמש באימייל אחר, יש לשלוח הזמנה חדשה.",
     "invalidInvite": "ההזמנה אינה חוקית או פג תוקפה.",
     "successTitle": "החשבון שלך נרשם",
+<<<<<<< HEAD
     "successHint": "התחל להשתמש ב-Ceto Admin מיד.",
     "successAction": "התחל עם Ceto Admin",
+=======
+    "successHint": "התחל להשתמש ב-Medusa Admin מיד.",
+    "successAction": "התחל עם Medusa Admin",
+>>>>>>> update-target
     "invalidTokenTitle": "אסימון ההזמנה שלך אינו תקף",
     "invalidTokenHint": "נסה לבקש קישור הזמנה חדש.",
     "passwordMismatch": "הסיסמאות אינן תואמות",
@@ -2721,7 +2746,11 @@
   },
   "workflowExecutions": {
     "domain": "תהליכי עבודה",
+<<<<<<< HEAD
     "subtitle": "צפה ועקוב אחר ביצועי תהליך העבודה באפליקציית Ceto שלך.",
+=======
+    "subtitle": "צפה ועקוב אחר ביצועי תהליך העבודה באפליקציית Medusa שלך.",
+>>>>>>> update-target
     "transactionIdLabel": "מזהה עסקה",
     "workflowIdLabel": "מזהה תהליך עבודה",
     "progressLabel": "התקדמות",
@@ -2812,7 +2841,11 @@
       "description": "אין לך התראות כרגע, אך ברגע שיהיו לך הן יופיעו כאן."
     },
     "accessibility": {
+<<<<<<< HEAD
       "description": "התראות על פעילויות Ceto יוצגו כאן."
+=======
+      "description": "התראות על פעילויות Medusa יוצגו כאן."
+>>>>>>> update-target
     }
   },
   "errors": {

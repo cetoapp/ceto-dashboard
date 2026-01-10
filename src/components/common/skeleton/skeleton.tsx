@@ -171,7 +171,11 @@ export const TableSkeleton = ({
   layout = "fit",
 }: TableSkeletonProps) => {
   // Row count + header row
+<<<<<<< HEAD
   const totalRowCount = rowCount + 2
+=======
+  const totalRowCount = rowCount + 1
+>>>>>>> update-target
 
   const rows = Array.from({ length: totalRowCount }, (_, i) => i)
   const hasToolbar = search || filters || orderBy
@@ -196,7 +200,11 @@ export const TableSkeleton = ({
       )}
       <div className="flex flex-col divide-y border-y">
         {rows.map((row) => (
+<<<<<<< HEAD
           <Skeleton key={row} className="h-11 w-full rounded-none" />
+=======
+          <Skeleton key={row} className="h-10 w-full rounded-none" />
+>>>>>>> update-target
         ))}
       </div>
       {pagination && <TableFooterSkeleton layout={layout} />}

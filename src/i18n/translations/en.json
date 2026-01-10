@@ -402,10 +402,13 @@
   "sales_channels": {
     "availableIn": "Available in <0>{{x}}</0> of <1>{{y}}</1> sales channels"
   },
+<<<<<<< HEAD
   "home": {
     "domain": "Home",
     "welcome": "Welcome to the homepage"
   },
+=======
+>>>>>>> update-target
   "products": {
     "domain": "Products",
     "list": {
@@ -1439,7 +1442,11 @@
       "title": "Create Refund",
       "sendNotificationHint": "Notify customers about the created refund.",
       "systemPayment": "System payment",
+<<<<<<< HEAD
       "systemPaymentDesc": "One or more of your payments is a system payment. Be aware, that captures and refunds are not handled by Ceto for such payments.",
+=======
+      "systemPaymentDesc": "One or more of your payments is a system payment. Be aware, that captures and refunds are not handled by Medusa for such payments.",
+>>>>>>> update-target
       "error": {
         "amountToLarge": "Cannot refund more than the original order amount.",
         "amountNegative": "Refund amount must be a positive number.",
@@ -2477,7 +2484,11 @@
       "header": "Edit Profile",
       "languageHint": "The language you want to use in the admin dashboard. This doesn't change the language of your store.",
       "languagePlaceholder": "Select language",
+<<<<<<< HEAD
       "usageInsightsHint": "Share usage insights and help us improve Ceto. You can read more about what we collect and how we use it in our <0>documentation</0>."
+=======
+      "usageInsightsHint": "Share usage insights and help us improve Medusa. You can read more about what we collect and how we use it in our <0>documentation</0>."
+>>>>>>> update-target
     },
     "toast": {
       "edit": "Profiles changes saved"
@@ -2526,9 +2537,15 @@
       "manage": "Manage translations",
       "manageLocales": "Manage locales"
     },
+<<<<<<< HEAD
     "subtitle": "Manage translations of your data in Ceto",
     "list": {
       "metrics": "{{translated}} of {{total}} fields translated"
+=======
+    "subtitle": "Manage translations of your data in Medusa",
+    "list": {
+      "metrics": "{{translated}} of {{total}} translations"
+>>>>>>> update-target
     },
     "edit": {
       "successToast": "Translations updated successfully",
@@ -2773,7 +2790,11 @@
       "createPublishableHeader": "Create Publishable API Key",
       "createPublishableHint": "Create a new publishable API key to limit the scope of requests to specific sales channels.",
       "createSecretHeader": "Create Secret API Key",
+<<<<<<< HEAD
       "createSecretHint": "Create a new secret API key to access the Ceto API as an authenticated admin user.",
+=======
+      "createSecretHint": "Create a new secret API key to access the Medusa API as an authenticated admin user.",
+>>>>>>> update-target
       "secretKeyCreatedHeader": "Secret Key Created",
       "secretKeyCreatedHint": "Your new secret key has been generated. Copy and securely store it now. This is the only time it will be displayed.",
       "copySecretTokenSuccess": "Secret key was copied to clipboard.",
@@ -2905,11 +2926,19 @@
   },
   "login": {
     "forgotPassword": "Forgot password? - <0>Reset</0>",
+<<<<<<< HEAD
     "title": "Welcome to Ceto",
     "hint": "Sign in to access the account area"
   },
   "invite": {
     "title": "Welcome to Ceto",
+=======
+    "title": "Welcome to Medusa",
+    "hint": "Sign in to access the account area"
+  },
+  "invite": {
+    "title": "Welcome to Medusa",
+>>>>>>> update-target
     "hint": "Create your account below",
     "backToLogin": "Back to login",
     "createAccount": "Create account",
@@ -2917,8 +2946,13 @@
     "emailTooltip": "Your email cannot be changed. If you would like to use another email, a new invite must be sent.",
     "invalidInvite": "The invite is invalid or has expired.",
     "successTitle": "Your account has been registered",
+<<<<<<< HEAD
     "successHint": "Get started with Ceto Admin right away.",
     "successAction": "Start Ceto Admin",
+=======
+    "successHint": "Get started with Medusa Admin right away.",
+    "successAction": "Start Medusa Admin",
+>>>>>>> update-target
     "invalidTokenTitle": "Your invite token is invalid",
     "invalidTokenHint": "Try requesting a new invite link.",
     "passwordMismatch": "Passwords do not match",
@@ -2951,7 +2985,11 @@
   },
   "workflowExecutions": {
     "domain": "Workflows",
+<<<<<<< HEAD
     "subtitle": "View and keep track of workflow executions in your Ceto application.",
+=======
+    "subtitle": "View and keep track of workflow executions in your Medusa application.",
+>>>>>>> update-target
     "transactionIdLabel": "Transaction ID",
     "workflowIdLabel": "Workflow ID",
     "progressLabel": "Progress",
@@ -3064,7 +3102,11 @@
       "description": "You don't have any notifications at the moment, but once you do they will live here."
     },
     "accessibility": {
+<<<<<<< HEAD
       "description": "Notifications about Ceto activities will be listed here."
+=======
+      "description": "Notifications about Medusa activities will be listed here."
+>>>>>>> update-target
     }
   },
   "errors": {
@@ -3298,7 +3340,11 @@
   "auth": {
     "login": {
       "authenticationFailed": "Authentication failed",
+<<<<<<< HEAD
       "cloud": "Log in with Ceto Cloud"
+=======
+      "cloud": "Log in with Medusa Cloud"
+>>>>>>> update-target
     }
   }
 }

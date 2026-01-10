@@ -46,6 +46,7 @@
   background-size: 40px 40px;
   background: repeat;
 }
+<<<<<<< HEAD
 
 :root {
   --buttons-inverted: 0 0 0 1px #404043; /* rgba(18, 29, 47, 1) */
@@ -55,3 +56,5 @@
   --text-ui-fg-interactive: rgba(22, 37, 59, 1);
   --text-ui-fg-interactive-hover: rgba(22, 37, 59, 1);
 }
+=======
+>>>>>>> update-target

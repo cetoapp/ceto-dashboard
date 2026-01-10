@@ -1542,6 +1542,7 @@
       "required": ["availableIn"],
       "additionalProperties": false
     },
+<<<<<<< HEAD
     "home": {
       "type": "object",
       "properties": {
@@ -1557,6 +1558,8 @@
       ],
       "additionalProperties": false
     },
+=======
+>>>>>>> update-target
     "products": {
       "type": "object",
       "properties": {

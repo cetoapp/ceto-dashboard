@@ -2587,7 +2587,11 @@
       "createPublishableHeader": "공개 API 키 생성",
       "createPublishableHint": "요청 범위를 특정 판매 채널로 제한하기 위한 새 공개 API 키를 생성합니다.",
       "createSecretHeader": "비밀 API 키 생성",
+<<<<<<< HEAD
       "createSecretHint": "인증된 관리자 사용자로 Ceto API에 접근하기 위한 새 비밀 API 키를 생성합니다.",
+=======
+      "createSecretHint": "인증된 관리자 사용자로 Medusa API에 접근하기 위한 새 비밀 API 키를 생성합니다.",
+>>>>>>> update-target
       "secretKeyCreatedHeader": "비밀 키 생성됨",
       "secretKeyCreatedHint": "새 비밀 키가 생성되었습니다. 지금 복사하여 안전하게 보관하세요. 이 키는 한 번만 표시됩니다.",
       "copySecretTokenSuccess": "비밀 키가 클립보드에 복사되었습니다.",
@@ -2696,8 +2700,13 @@
     "emailTooltip": "이메일은 변경할 수 없습니다. 다른 이메일을 사용하고 싶다면 새 초대장을 보내야 합니다.",
     "invalidInvite": "초대장이 유효하지 않거나 만료되었습니다.",
     "successTitle": "계정이 등록되었습니다",
+<<<<<<< HEAD
     "successHint": "지금 바로 Ceto 관리자를 시작하세요.",
     "successAction": "Ceto 관리자 시작",
+=======
+    "successHint": "지금 바로 Medusa 관리자를 시작하세요.",
+    "successAction": "Medusa 관리자 시작",
+>>>>>>> update-target
     "invalidTokenTitle": "초대 토큰이 유효하지 않습니다",
     "invalidTokenHint": "새 초대 링크를 요청해 보세요.",
     "passwordMismatch": "비밀번호가 일치하지 않습니다",
@@ -2730,7 +2739,11 @@
   },
   "workflowExecutions": {
     "domain": "워크플로우",
+<<<<<<< HEAD
     "subtitle": "Ceto 애플리케이션의 워크플로우 실행을 보고 추적합니다.",
+=======
+    "subtitle": "Medusa 애플리케이션의 워크플로우 실행을 보고 추적합니다.",
+>>>>>>> update-target
     "transactionIdLabel": "트랜잭션 ID",
     "workflowIdLabel": "워크플로우 ID",
     "progressLabel": "진행 상황",
@@ -2821,7 +2834,11 @@
       "description": "현재 알림이 없습니다. 알림이 생기면 여기에 표시됩니다."
     },
     "accessibility": {
+<<<<<<< HEAD
       "description": "Ceto 활동에 대한 알림이 여기에 나열됩니다."
+=======
+      "description": "Medusa 활동에 대한 알림이 여기에 나열됩니다."
+>>>>>>> update-target
     }
   },
   "errors": {

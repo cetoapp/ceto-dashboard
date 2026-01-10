@@ -1232,7 +1232,11 @@
       "title": "Rückerstattung erstellen",
       "sendNotificationHint": "Benachrichtigen Sie Kunden über die erstellte Rückerstattung.",
       "systemPayment": "Systemzahlung",
+<<<<<<< HEAD
       "systemPaymentDesc": "Eine oder mehrere Ihrer Zahlungen sind eine Systemzahlung. Beachten Sie, dass Ceto für solche Zahlungen keine Einziehungen und Rückerstattungen übernimmt.",
+=======
+      "systemPaymentDesc": "Eine oder mehrere Ihrer Zahlungen sind eine Systemzahlung. Beachten Sie, dass Medusa für solche Zahlungen keine Einziehungen und Rückerstattungen übernimmt.",
+>>>>>>> update-target
       "error": {
         "amountToLarge": "Es kann nicht mehr als der ursprüngliche Bestellbetrag erstattet werden.",
         "amountNegative": "Der Rückerstattungsbetrag muss eine positive Zahl sein.",
@@ -2130,7 +2134,11 @@
       "header": "Profil bearbeiten",
       "languageHint": "Die Sprache, die Sie im Admin-Dashboard verwenden möchten. Die Sprache Ihres Shops ändert sich dadurch nicht.",
       "languagePlaceholder": "Sprache auswählen",
+<<<<<<< HEAD
       "usageInsightsHint": "Teilen Sie Nutzungseinblicke und helfen Sie uns, Ceto zu verbessern. Weitere Informationen darüber, was wir sammeln und wie wir es verwenden, finden Sie in unserer <0>Dokumentation</0>."
+=======
+      "usageInsightsHint": "Teilen Sie Nutzungseinblicke und helfen Sie uns, Medusa zu verbessern. Weitere Informationen darüber, was wir sammeln und wie wir es verwenden, finden Sie in unserer <0>Dokumentation</0>."
+>>>>>>> update-target
     },
     "toast": {
       "edit": "Profiländerungen gespeichert"
@@ -2360,7 +2368,11 @@
       "createPublishableHeader": "Erstellen Sie einen veröffentlichbaren API-Schlüssel",
       "createPublishableHint": "Erstellen Sie einen neuen veröffentlichbaren API-Schlüssel, um den Umfang der Anfragen auf bestimmte Vertriebskanäle zu beschränken.",
       "createSecretHeader": "Erstellen Sie einen geheimen API-Schlüssel",
+<<<<<<< HEAD
       "createSecretHint": "Erstellen Sie einen neuen geheimen API-Schlüssel, um als authentifizierter Admin-Benutzer auf die Ceto-API zuzugreifen.",
+=======
+      "createSecretHint": "Erstellen Sie einen neuen geheimen API-Schlüssel, um als authentifizierter Admin-Benutzer auf die Medusa-API zuzugreifen.",
+>>>>>>> update-target
       "secretKeyCreatedHeader": "Geheimer Schlüssel erstellt",
       "secretKeyCreatedHint": "Ihr neuer geheimer Schlüssel wurde generiert. Jetzt kopieren und sicher aufbewahren. Dies ist das einzige Mal, dass es angezeigt wird.",
       "copySecretTokenSuccess": "Der geheime Schlüssel wurde in die Zwischenablage kopiert.",
@@ -2457,11 +2469,19 @@
   },
   "login": {
     "forgotPassword": "Passwort vergessen? - <0>Zurücksetzen</0>",
+<<<<<<< HEAD
     "title": "Willkommen bei Ceto",
     "hint": "Melden Sie sich an, um auf ihr Konto zuzugreifen"
   },
   "invite": {
     "title": "Willkommen bei Ceto",
+=======
+    "title": "Willkommen bei Medusa",
+    "hint": "Melden Sie sich an, um auf ihr Konto zuzugreifen"
+  },
+  "invite": {
+    "title": "Willkommen bei Medusa",
+>>>>>>> update-target
     "hint": "Erstellen Sie unten Ihr Konto",
     "backToLogin": "Zurück zum Login",
     "createAccount": "Benutzerkonto erstellen",
@@ -2469,8 +2489,13 @@
     "emailTooltip": "Ihre E-Mail-Adresse kann nicht geändert werden. Wenn Sie eine andere E-Mail-Adresse verwenden möchten, muss eine neue Einladung gesendet werden.",
     "invalidInvite": "Die Einladung ist ungültig oder abgelaufen.",
     "successTitle": "Ihr Konto wurde registriert",
+<<<<<<< HEAD
     "successHint": "Beginnen Sie sofort mit Ceto Admin.",
     "successAction": "Starten Sie Ceto Admin",
+=======
+    "successHint": "Beginnen Sie sofort mit Medusa Admin.",
+    "successAction": "Starten Sie Medusa Admin",
+>>>>>>> update-target
     "invalidTokenTitle": "Ihr Einladungstoken ist ungültig",
     "invalidTokenHint": "Versuchen Sie, einen neuen Einladungslink anzufordern.",
     "passwordMismatch": "Passwörter stimmen nicht überein",
@@ -2503,7 +2528,11 @@
   },
   "workflowExecutions": {
     "domain": "Workflows",
+<<<<<<< HEAD
     "subtitle": "Sehen Sie sich Workflow-Ausführungen in Ihrer Ceto-Anwendung an und verfolgen Sie sie.",
+=======
+    "subtitle": "Sehen Sie sich Workflow-Ausführungen in Ihrer Medusa-Anwendung an und verfolgen Sie sie.",
+>>>>>>> update-target
     "transactionIdLabel": "Transaktions-ID",
     "workflowIdLabel": "Workflow-ID",
     "progressLabel": "Fortschritt",
@@ -2594,7 +2623,11 @@
       "description": "Sie haben im Moment keine Benachrichtigungen, aber sobald Sie dies tun, werden sie hier angezeigt."
     },
     "accessibility": {
+<<<<<<< HEAD
       "description": "Benachrichtigungen über Ceto-Aktivitäten werden hier aufgelistet."
+=======
+      "description": "Benachrichtigungen über Medusa-Aktivitäten werden hier aufgelistet."
+>>>>>>> update-target
     }
   },
   "errors": {

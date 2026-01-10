@@ -382,10 +382,13 @@
   "sales_channels": {
     "availableIn": "Disponible dans <0>{{x}}</0> canaux de vente sur <1>{{y}}</1>"
   },
+<<<<<<< HEAD
   "home": {
     "domain": "Accueil",
     "welcome": "Bienvenue sur la page d’accueil"
   },
+=======
+>>>>>>> update-target
   "products": {
     "domain": "Produits",
     "list": {
@@ -1237,7 +1240,11 @@
       "title": "Créer un remboursement",
       "sendNotificationHint": "Notifier le client concernant le remboursement créé.",
       "systemPayment": "Paiement système",
+<<<<<<< HEAD
       "systemPaymentDesc": "Un ou plusieurs de vos paiements est un paiement système. Soyez conscient que les captures et les remboursements ne sont pas gérés par Ceto pour de tels paiements.",
+=======
+      "systemPaymentDesc": "Un ou plusieurs de vos paiements est un paiement système. Soyez conscient que les captures et les remboursements ne sont pas gérés par Medusa pour de tels paiements.",
+>>>>>>> update-target
       "error": {
         "amountToLarge": "Ne peut rembourser plus que le montant de la commande originale.",
         "amountNegative": "Le montant du remboursement doit être un nombre positif.",
@@ -2136,7 +2143,11 @@
       "header": "Modifier le profil",
       "languageHint": "La langue que vous souhaitez utiliser dans le tableau de bord administratif. Cela ne change pas la langue de votre boutique.",
       "languagePlaceholder": "Sélectionner la langue",
+<<<<<<< HEAD
       "usageInsightsHint": "Partager les données d'utilisation et nous aider à améliorer Ceto. Vous pouvez en savoir plus sur ce que nous collectons et comment nous l'utilisons dans notre <0>documentation</0>."
+=======
+      "usageInsightsHint": "Partager les données d'utilisation et nous aider à améliorer Medusa. Vous pouvez en savoir plus sur ce que nous collectons et comment nous l'utilisons dans notre <0>documentation</0>."
+>>>>>>> update-target
     },
     "toast": {
       "edit": "Modifications du profil enregistrées"
@@ -2366,7 +2377,11 @@
       "createPublishableHeader": "Créer une clé API publique",
       "createPublishableHint": "Créer une nouvelle clé API publique pour limiter la portée des requêtes aux canaux de vente spécifiques.",
       "createSecretHeader": "Créer une clé API secrète",
+<<<<<<< HEAD
       "createSecretHint": "Créer une nouvelle clé API secrète pour accéder à l'API Ceto en tant qu'utilisateur administratif authentifié.",
+=======
+      "createSecretHint": "Créer une nouvelle clé API secrète pour accéder à l'API Medusa en tant qu'utilisateur administratif authentifié.",
+>>>>>>> update-target
       "secretKeyCreatedHeader": "Clé secrète créée",
       "secretKeyCreatedHint": "Votre nouvelle clé secrète a été générée. Copiez et stockez-la maintenant. C'est la seule fois où elle sera affichée.",
       "copySecretTokenSuccess": "Clé secrète copiée dans le presse-papiers.",
@@ -2460,11 +2475,19 @@
   },
   "login": {
     "forgotPassword": "Mot de passe oublié? - <0>Réinitialiser</0>",
+<<<<<<< HEAD
     "title": "Bienvenue sur Ceto",
     "hint": "Connectez-vous pour accéder à l'espace administratif"
   },
   "invite": {
     "title": "Bienvenue sur Ceto",
+=======
+    "title": "Bienvenue sur Medusa",
+    "hint": "Connectez-vous pour accéder à l'espace administratif"
+  },
+  "invite": {
+    "title": "Bienvenue sur Medusa",
+>>>>>>> update-target
     "hint": "Créez votre compte ci-dessous",
     "backToLogin": "Retour à la connexion",
     "createAccount": "Créer un compte",
@@ -2472,8 +2495,13 @@
     "emailTooltip": "Votre email ne peut être modifié. Si vous souhaitez utiliser un autre email, un nouveau lien d'invitation doit être envoyé.",
     "invalidInvite": "Le lien d'invitation est invalide ou a expiré.",
     "successTitle": "Votre compte a été enregistré",
+<<<<<<< HEAD
     "successHint": "Commencez avec Ceto Admin dès maintenant.",
     "successAction": "Commencer Ceto Admin",
+=======
+    "successHint": "Commencez avec Medusa Admin dès maintenant.",
+    "successAction": "Commencer Medusa Admin",
+>>>>>>> update-target
     "invalidTokenTitle": "Votre lien d'invitation est invalide",
     "invalidTokenHint": "Essayez de demander un nouveau lien d'invitation.",
     "passwordMismatch": "Les mots de passe ne correspondent pas",
@@ -2506,7 +2534,11 @@
   },
   "workflowExecutions": {
     "domain": "Workflows",
+<<<<<<< HEAD
     "subtitle": "Voir et suivre les exécutions des workflows dans votre application Ceto.",
+=======
+    "subtitle": "Voir et suivre les exécutions des workflows dans votre application Medusa.",
+>>>>>>> update-target
     "transactionIdLabel": "ID de la transaction",
     "workflowIdLabel": "ID du workflow",
     "progressLabel": "Progression",
@@ -2597,7 +2629,11 @@
       "description": "Vous n'avez aucune notification pour le moment, mais elles apparaîtront ici une fois que vous les aurez."
     },
     "accessibility": {
+<<<<<<< HEAD
       "description": "Les notifications concernant les activités Ceto seront listées ici."
+=======
+      "description": "Les notifications concernant les activités Medusa seront listées ici."
+>>>>>>> update-target
     }
   },
   "errors": {

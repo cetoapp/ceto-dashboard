@@ -43,6 +43,7 @@ const getIsOpen = (
   items: NestedItemProps[] | undefined,
   pathname: string
 ) => {
+<<<<<<< HEAD
   const paths = [to, ...(items?.map((i) => i.to) ?? [])];
 
   return paths.some((p) => {
@@ -52,6 +53,12 @@ const getIsOpen = (
     return pathname === p || pathname.startsWith(p + "/");
   });
 };
+=======
+  return [to, ...(items?.map((i) => i.to) ?? [])].some((p) =>
+    pathname.startsWith(p)
+  )
+}
+>>>>>>> update-target
 
 const NavItemTooltip = ({
   to,
@@ -117,6 +124,7 @@ export const NavItem = ({
       isNested = false,
       isSetting = false,
     }: {
+<<<<<<< HEAD
       to: string;
       isActive: boolean;
       isNested?: boolean;
@@ -128,6 +136,15 @@ export const NavItem = ({
         } else {
           isActive = pathname === to || pathname.startsWith(to + "/");
         }
+=======
+      to: string
+      isActive: boolean
+      isNested?: boolean
+      isSetting?: boolean
+    }) => {
+      if (["core", "setting"].includes(type)) {
+        isActive = pathname.startsWith(to)
+>>>>>>> update-target
       }
 
       return clx(BASE_NAV_LINK_CLASSES, {

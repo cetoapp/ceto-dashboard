@@ -2254,7 +2254,11 @@
       "header": "Editați profilul",
       "languageHint": "Limba pe care doriți să o utilizați în tabloul de bord administrativ. ",
       "languagePlaceholder": "Selectați limba",
+<<<<<<< HEAD
       "usageInsightsHint": "Distribuiți informații despre utilizare și ajutați-ne să îmbunătățim Ceto.  <0>documentare</0>."
+=======
+      "usageInsightsHint": "Distribuiți informații despre utilizare și ajutați-ne să îmbunătățim Medusa.  <0>documentare</0>."
+>>>>>>> update-target
     },
     "toast": {
       "edit": "Modificările profilurilor au fost salvate"
@@ -2498,7 +2502,11 @@
       "createPublishableHeader": "Creați cheia API publicabilă",
       "createPublishableHint": "Creați o nouă cheie API publicabilă pentru a limita sfera solicitărilor la anumite canale de vânzare.",
       "createSecretHeader": "Creați cheia API secretă",
+<<<<<<< HEAD
       "createSecretHint": "Creați o nouă cheie API secretă pentru a accesa API-ul Ceto ca utilizator administrator autentificat.",
+=======
+      "createSecretHint": "Creați o nouă cheie API secretă pentru a accesa API-ul Medusa ca utilizator administrator autentificat.",
+>>>>>>> update-target
       "secretKeyCreatedHeader": "Cheie secretă creată",
       "secretKeyCreatedHint": "Noua ta cheie secretă a fost generată. ",
       "copySecretTokenSuccess": "Cheia secretă a fost copiată în clipboard.",
@@ -2595,11 +2603,19 @@
   },
   "login": {
     "forgotPassword": "Aţi uitat parola?  <0>Resetați</0>",
+<<<<<<< HEAD
     "title": "Bun venit la Ceto",
     "hint": "Conectați-vă pentru a accesa zona de cont"
   },
   "invite": {
     "title": "Bun venit la Ceto",
+=======
+    "title": "Bun venit la Medusa",
+    "hint": "Conectați-vă pentru a accesa zona de cont"
+  },
+  "invite": {
+    "title": "Bun venit la Medusa",
+>>>>>>> update-target
     "hint": "Creează-ți contul mai jos",
     "backToLogin": "Înapoi la autentificare",
     "createAccount": "Creează cont",
@@ -2607,8 +2623,13 @@
     "emailTooltip": "E-mailul dvs. nu poate fi schimbat. ",
     "invalidInvite": "Invitația este nevalidă sau a expirat.",
     "successTitle": "Contul dvs. a fost înregistrat",
+<<<<<<< HEAD
     "successHint": "Începeți imediat cu Ceto Admin.",
     "successAction": "Porniți Ceto Admin",
+=======
+    "successHint": "Începeți imediat cu Medusa Admin.",
+    "successAction": "Porniți Medusa Admin",
+>>>>>>> update-target
     "invalidTokenTitle": "Indicatorul dvs. de invitație este nevalid",
     "invalidTokenHint": "Încercați să solicitați un nou link de invitație.",
     "passwordMismatch": "Parolele nu se potrivesc",
@@ -2641,7 +2662,11 @@
   },
   "workflowExecutions": {
     "domain": "Fluxuri de lucru",
+<<<<<<< HEAD
     "subtitle": "Vizualizați și urmăriți execuțiile fluxului de lucru în aplicația dvs. Ceto.",
+=======
+    "subtitle": "Vizualizați și urmăriți execuțiile fluxului de lucru în aplicația dvs. Medusa.",
+>>>>>>> update-target
     "transactionIdLabel": "ID tranzacție",
     "workflowIdLabel": "ID flux de lucru",
     "progressLabel": "Progres",
@@ -2732,7 +2757,11 @@
       "description": "Nu aveți notificări momentan, dar odată ce o faceți vor locui aici."
     },
     "accessibility": {
+<<<<<<< HEAD
       "description": "notificările despre activitățile Ceto vor fi listate aici."
+=======
+      "description": "notificările despre activitățile Medusa vor fi listate aici."
+>>>>>>> update-target
     }
   },
   "errors": {

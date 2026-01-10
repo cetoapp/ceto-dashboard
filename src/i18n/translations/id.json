@@ -1351,7 +1351,11 @@
             "title": "Buat Pengembalian Dana",
             "sendNotificationHint": "Beritahu pelanggan tentang pengembalian dana yang dibuat.",
             "systemPayment": "Pembayaran sistem",
+<<<<<<< HEAD
             "systemPaymentDesc": "Satu atau lebih pembayaran Anda adalah pembayaran sistem. Perlu diketahui, pengambilan dan pengembalian dana tidak ditangani oleh Ceto untuk pembayaran tersebut.",
+=======
+            "systemPaymentDesc": "Satu atau lebih pembayaran Anda adalah pembayaran sistem. Perlu diketahui, pengambilan dan pengembalian dana tidak ditangani oleh Medusa untuk pembayaran tersebut.",
+>>>>>>> update-target
             "error": {
                 "amountToLarge": "Tidak dapat mengembalikan dana lebih dari jumlah pesanan awal.",
                 "amountNegative": "Jumlah pengembalian dana harus berupa angka positif.",
@@ -2326,7 +2330,11 @@
             "header": "Edit Profil",
             "languageHint": "Bahasa yang ingin Anda gunakan di dasbor admin. Ini tidak mengubah bahasa toko Anda.",
             "languagePlaceholder": "Pilih bahasa",
+<<<<<<< HEAD
             "usageInsightsHint": "Bagikan wawasan penggunaan dan bantu kami meningkatkan Ceto. Anda dapat membaca lebih lanjut tentang apa yang kami kumpulkan dan bagaimana kami menggunakannya di <0>dokumentasi</0> kami."
+=======
+            "usageInsightsHint": "Bagikan wawasan penggunaan dan bantu kami meningkatkan Medusa. Anda dapat membaca lebih lanjut tentang apa yang kami kumpulkan dan bagaimana kami menggunakannya di <0>dokumentasi</0> kami."
+>>>>>>> update-target
         },
         "toast": {
             "edit": "Perubahan profil tersimpan"
@@ -2581,7 +2589,11 @@
             "createPublishableHeader": "Buat Kunci API yang Dapat Dipublikasikan",
             "createPublishableHint": "Buat kunci API yang dapat dipublikasikan baru untuk membatasi cakupan permintaan ke saluran penjualan tertentu.",
             "createSecretHeader": "Buat Kunci API Rahasia",
+<<<<<<< HEAD
             "createSecretHint": "Buat kunci API rahasia baru untuk mengakses Ceto API sebagai pengguna admin terautentikasi.",
+=======
+            "createSecretHint": "Buat kunci API rahasia baru untuk mengakses Medusa API sebagai pengguna admin terautentikasi.",
+>>>>>>> update-target
             "secretKeyCreatedHeader": "Kunci Rahasia Dibuat",
             "secretKeyCreatedHint": "Kunci rahasia baru Anda telah dibuat. Salin dan simpan dengan aman sekarang. Ini adalah satu-satunya saat akan ditampilkan.",
             "copySecretTokenSuccess": "Kunci rahasia berhasil disalin ke papan klip.",
@@ -2678,11 +2690,19 @@
     },
     "login": {
         "forgotPassword": "Lupa kata sandi? - <0>Setel ulang</0>",
+<<<<<<< HEAD
         "title": "Selamat datang di Ceto",
         "hint": "Masuk untuk mengakses area akun"
     },
     "invite": {
         "title": "Selamat datang di Ceto",
+=======
+        "title": "Selamat datang di Medusa",
+        "hint": "Masuk untuk mengakses area akun"
+    },
+    "invite": {
+        "title": "Selamat datang di Medusa",
+>>>>>>> update-target
         "hint": "Buat akun Anda di bawah",
         "backToLogin": "Kembali ke login",
         "createAccount": "Buat akun",
@@ -2690,8 +2710,13 @@
         "emailTooltip": "Alamat email Anda tidak dapat diubah. Jika Anda ingin menggunakan email lain, undangan baru harus dikirim.",
         "invalidInvite": "Undangan tidak valid atau sudah kedaluwarsa.",
         "successTitle": "Akun Anda telah terdaftar",
+<<<<<<< HEAD
         "successHint": "Mulai gunakan Ceto Admin sekarang juga.",
         "successAction": "Mulai Ceto Admin",
+=======
+        "successHint": "Mulai gunakan Medusa Admin sekarang juga.",
+        "successAction": "Mulai Medusa Admin",
+>>>>>>> update-target
         "invalidTokenTitle": "Token undangan Anda tidak valid",
         "invalidTokenHint": "Coba minta tautan undangan baru.",
         "passwordMismatch": "Kata sandi tidak cocok",
@@ -2724,7 +2749,11 @@
     },
     "workflowExecutions": {
         "domain": "Alur Kerja",
+<<<<<<< HEAD
         "subtitle": "Lihat dan pantau eksekusi alur kerja di aplikasi Ceto Anda.",
+=======
+        "subtitle": "Lihat dan pantau eksekusi alur kerja di aplikasi Medusa Anda.",
+>>>>>>> update-target
         "transactionIdLabel": "ID Transaksi",
         "workflowIdLabel": "ID Alur Kerja",
         "progressLabel": "Kemajuan",
@@ -2815,7 +2844,11 @@
             "description": "Anda belum memiliki notifikasi saat ini, tetapi setelah ada, akan muncul di sini."
         },
         "accessibility": {
+<<<<<<< HEAD
             "description": "Notifikasi tentang aktivitas Ceto akan dicantumkan di sini."
+=======
+            "description": "Notifikasi tentang aktivitas Medusa akan dicantumkan di sini."
+>>>>>>> update-target
         }
     },
     "errors": {
