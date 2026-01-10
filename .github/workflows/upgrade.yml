@@ -77,13 +77,10 @@ jobs:
           git push origin "$BRANCH"
 
       - name: Create Pull Request
-        env:
-          GH_TOKEN: ${{ secrets.MEDUSA_SYNC_PAT }}
-        run: |
-          # Export PAT so gh CLI can see it
-          export GH_TOKEN="${GH_TOKEN}"
-          gh pr create \
-            --base main \
-            --head "$BRANCH" \
-            --title "feat: Sync Medusa Dashboard to $TARGET_TAG" \
-            --body "**Automated dashboard sync**\n\nFrom: $CURRENT_TAG\nTo: $TARGET_TAG\n\n⚠️ This PR contains merge conflicts that require manual resolution."
+        uses: devops-infra/action-pull-request@v0.3.5
+        with:
+          github_token: ${{ secrets.MEDUSA_SYNC_PAT }}
+          source_branch: $BRANCH
+          target_branch: main
+          title: "feat: Sync Medusa Dashboard to $TARGET_TAG"
+          body: "**Automated dashboard sync**\n\nFrom: $CURRENT_TAG\nTo: $TARGET_TAG\n\n⚠️ This PR contains merge conflicts."
