@@ -36,7 +36,7 @@ jobs:
           TARGET_TAG=$(git tag -l "v2*" --sort=version:refname | tail -n 1)
 
           echo "Current: $CURRENT_TAG"
-          echo "Target : $TARGET_TAG"
+          echo "Target: $TARGET_TAG"
 
           BRANCH="update-$TARGET_TAG"
 
@@ -47,7 +47,7 @@ jobs:
 
           git checkout -b "$BRANCH"
 
-          # --- Fake ancestor (current version) ---
+          # Fake ancestor commit
           BASE_ID=$(git commit-tree "$CURRENT_TAG:$TARGET_PATH" \
             -m "Base History ($CURRENT_TAG)")
 
@@ -57,30 +57,34 @@ jobs:
             -s ours \
             -m "Chore: Link Medusa history ($CURRENT_TAG)"
 
-          # --- Target update ---
+          # Target update commit
           TARGET_ID=$(git commit-tree "$TARGET_TAG:$TARGET_PATH" \
             -m "Update Target ($TARGET_TAG)")
 
           git branch -f update-target "$TARGET_ID"
 
-          # 🔥 Allow conflicts without failing the workflow
+          # Allow conflicts
           set +e
           git merge update-target \
             --allow-unrelated-histories \
             -m "Update: Sync Dashboard to $TARGET_TAG"
           set -e
 
-          # ✅ Commit conflicted state so PR can show conflicts
+          # Commit conflicted state so PR can show conflicts
           git add -A
           git commit -m "WIP: Resolve conflicts for Medusa $TARGET_TAG" || true
 
           git push origin "$BRANCH"
 
       - name: Create Pull Request
-        uses: devops-infra/action-pull-request@v0.3.5
+        uses: peter-evans/create-pull-request@v8
         with:
-          github_token: ${{ secrets.MEDUSA_SYNC_PAT }}
-          source_branch: $BRANCH
-          target_branch: main
-          title: "feat: Sync Medusa Dashboard to $TARGET_TAG"
-          body: "**Automated dashboard sync**\n\nFrom: $CURRENT_TAG\nTo: $TARGET_TAG\n\n⚠️ This PR contains merge conflicts."
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}  # this will be the update-<target> branch
+          commit-message: "Sync Medusa Dashboard (${{ github.ref_name }})"
+          title: "feat: Sync Medusa Dashboard to ${{ github.ref_name }}"
+          body: |
+            **Automated dashboard sync**
+            From: ${{ github.ref_name }}
+            To: ${{ github.ref_name }}
+            ⚠️ This PR contains merge conflicts that require manual resolution.
