@@ -2,7 +2,7 @@
 This is the tailored admin dashboard for the Ceto app.
 This documentation outlines the step-by-step process to create and update the dashboard project.
 
-> ⚠️ **Warning:** This project is currently based on Medusa version 2.12.3.  
+> ⚠️ **Warning:** This project is currently based on Medusa version 2.12.4.  
 > If any modifications are introduced, please update the upgrade checklist accordingly.
 
 > ⚠️ **Warning:** Since Medusa Didn't do dashboard updates in the v2.12.5 then we can't test the workflow yet.
