@@ -1,5 +1,6 @@
 import { clx } from "@medusajs/ui";
 import { Transition } from "motion/react";
+import { LogoAvatar } from "./logo-avatar";
 
 type LogoBoxProps = {
   className?: string;
@@ -30,18 +31,8 @@ export const LogoBox = ({
         className
       )}
     >
-      {checked && (
-        <img
-          src="/images/avatar.svg"
-          alt="Ceto logo"
-          className="rounded-[10px] w-[240px] h-auto"
-        />
-      )}
-      <img
-        src="/images/avatar.svg"
-        alt="Ceto logo"
-        className="rounded-[10px] w-[240px] h-auto"
-      />
+      {checked && <LogoAvatar className="rounded-[10px] w-[240px] h-auto" />}
+      <LogoAvatar className="rounded-[10px] w-[240px] h-auto" />
     </div>
   );
 };
