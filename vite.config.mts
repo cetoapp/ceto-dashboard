@@ -2,6 +2,7 @@ import inject from "@medusajs/admin-vite-plugin"
 import react from "@vitejs/plugin-react"
 import { defineConfig, loadEnv } from "vite"
 import inspect from "vite-plugin-inspect"
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js"
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -25,11 +26,17 @@ export default defineConfig(({ mode }) => {
       inject({
         sources,
       }),
+      // Adds the CSS injection plugin
+      cssInjectedByJsPlugin(),
     ],
     define: {
       __BASE__: JSON.stringify(BASE),
       __BACKEND_URL__: JSON.stringify(BACKEND_URL),
       __STOREFRONT_URL__: JSON.stringify(STOREFRONT_URL),
+    },
+    // We add cssCodeSplit: false to ensure the plugin captures everything
+    build: {
+        cssCodeSplit: false,
     },
     server: {
       open: true,

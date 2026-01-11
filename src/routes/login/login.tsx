@@ -25,7 +25,7 @@ export const Login = () => {
   const { getWidgets } = useExtension()
   const { data: cloudAuth } = useCloudAuthEnabled()
 
-  const from = location.state?.from?.pathname || "/orders"
+  const from = location.state?.from?.pathname || "/"
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),

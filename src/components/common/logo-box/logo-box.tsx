@@ -1,6 +1,5 @@
 import { clx } from "@medusajs/ui";
 import { Transition } from "motion/react";
-import CetoLogo from "../../../assets/images/avatar.svg";
 
 type LogoBoxProps = {
   className?: string;
@@ -33,13 +32,13 @@ export const LogoBox = ({
     >
       {checked && (
         <img
-          src={CetoLogo}
+          src="/images/avatar.svg"
           alt="Ceto logo"
           className="rounded-[10px] w-[240px] h-auto"
         />
       )}
       <img
-        src={CetoLogo}
+        src="/images/avatar.svg"
         alt="Ceto logo"
         className="rounded-[10px] w-[240px] h-auto"
       />

@@ -48,7 +48,7 @@
 }
 
 :root {
-  --buttons-inverted: 0 0 0 1px #404043; /* rgba(18, 29, 47, 1) */
+  --buttons-inverted: 0 0 0 1px #404043;
   --button-inverted: rgba(22, 37, 59, 1);
   --button-inverted-pressed: rgba(22, 37, 59, 0.9);
   --button-inverted-hover: rgba(22, 37, 59, 0.9);

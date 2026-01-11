@@ -1,6 +1,6 @@
 {
   "name": "ceto-dashboard",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "scripts": {
     "generate:static": "node ./scripts/generate-currencies.js && prettier --write ./src/lib/currencies.ts",
     "dev": "./node_modules/.bin/vite",
@@ -72,6 +72,7 @@
     "react-i18next": "13.5.0",
     "react-jwt": "^1.2.0",
     "react-router-dom": "6.20.1",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
     "zod": "3.25.76"
   },
   "devDependencies": {

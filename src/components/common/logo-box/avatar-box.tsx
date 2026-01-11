@@ -1,5 +1,4 @@
 import { IconAvatar } from "../icon-avatar";
-import CetoLogo from "../../../assets/images/white-logo.svg";
 
 type AvatarBoxProps = {
   checked?: boolean
@@ -14,14 +13,14 @@ export default function AvatarBox({ checked, size }: AvatarBoxProps) {
     >
       {checked && (
         <img
-          src={CetoLogo}
+          src="/images/white-logo.svg"
           alt="Ceto logo"
           className="rounded-xl max-w-full h-auto"
         />
       )}
 
       <img
-        src={CetoLogo}
+        src="/images/white-logo.svg"
         className="rounded-xl max-w-full h-auto"
       />
     </IconAvatar>
