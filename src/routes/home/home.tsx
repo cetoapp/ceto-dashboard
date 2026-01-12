@@ -97,8 +97,8 @@ export const Home = () => {
       <div className="flex flex-col gap-4 py-2 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <Heading
-            level="h1"
-            className="text-lg font-semibold text-ui-fg-base sm:text-xl"
+            level="h2"
+            className="text-lg font-medium text-ui-fg-base sm:text-xl"
           >
             {getGreeting(data.user.firstName)}
           </Heading>
