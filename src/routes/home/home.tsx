@@ -12,75 +12,18 @@ import {
 
 import { getGreeting } from "../../utils/general-utils";
 import { OrderListTable } from "./components/order-list";
+import {
+  useOrderRevenueMetrics,
+  useOrdersToday,
+  usePendingReturnOrders,
+} from "../../hooks/api/orders";
+import { useStore } from "../../hooks/api/store";
+import { formatCurrency } from "../../lib/format-currency";
 
 const MOCK_DATA = {
   user: {
-    firstName: "Admin",
+    firstName: "Ghazi",
   },
-  metrics: [
-    {
-      label: "Total Revenue",
-      value: "$12,450.00",
-      trend: "+12%",
-      trendDirection: "up",
-      icon: CurrencyDollar,
-    },
-    {
-      label: "Orders Today",
-      value: "24",
-      trend: "+4",
-      trendDirection: "up",
-      icon: ShoppingCart,
-    },
-    {
-      label: "Avg. Order Value",
-      value: "$115.50",
-      trend: "+8%",
-      trendDirection: "up",
-      icon: CurrencyDollar,
-    },
-    {
-      label: "Returns Pending",
-      value: "3",
-      trend: "",
-      trendDirection: "neutral",
-      icon: ExclamationCircle,
-    },
-  ],
-  pendingOrders: [
-    {
-      id: "#1024",
-      customer: "Alice Freeman",
-      total: "$120.00",
-      status: "paid",
-      items: 3,
-      date: "2 hrs ago",
-    },
-    {
-      id: "#1023",
-      customer: "Bob Smith",
-      total: "$55.50",
-      status: "awaiting",
-      items: 1,
-      date: "4 hrs ago",
-    },
-    {
-      id: "#1022",
-      customer: "Charlie Day",
-      total: "$210.00",
-      status: "paid",
-      items: 5,
-      date: "5 hrs ago",
-    },
-    {
-      id: "#1021",
-      customer: "Dana White",
-      total: "$45.00",
-      status: "paid",
-      items: 1,
-      date: "Yesterday",
-    },
-  ],
   lowStock: [
     { name: "Classic T-Shirt (Black/L)", quantity: 2 },
     { name: "Leather Wallet", quantity: 0 },
@@ -89,8 +32,59 @@ const MOCK_DATA = {
 };
 
 export const Home = () => {
-  // In the future, you will replace this line with: const { data } = useAdminCustomQuery(...)
-  const data = MOCK_DATA;
+  // Load store data to get currency info
+  const { store, isLoading: isStoreLoading } = useStore();
+  const currency = store?.supported_currencies[0].currency_code;
+
+  const {
+    totalRevenue,
+    avgOrderValue,
+    isLoading: isLoadingRevenue,
+  } = useOrderRevenueMetrics({ limit: 1000 });
+
+  const { count: ordersTodayCount, isLoading: isLoadingToday } =
+    useOrdersToday();
+
+  // 3. Fetch Pending Returns
+  const { count: returnsCount, isLoading: isLoadingReturns } =
+    usePendingReturnOrders();
+
+  const isLoading = isLoadingRevenue || isLoadingToday || isStoreLoading || isLoadingReturns;
+
+  const metrics = [
+    {
+      label: "Total Revenue",
+      value: totalRevenue
+        ? formatCurrency(totalRevenue, currency!)
+        : `${currency}0.00`,
+      trend: "+12%",
+      trendDirection: "up",
+      icon: CurrencyDollar,
+    },
+    {
+      label: "Orders Today",
+      value: ordersTodayCount?.toString() || "0",
+      trend: "+4",
+      trendDirection: "up",
+      icon: ShoppingCart,
+    },
+    {
+      label: "Avg. Order Value",
+      value: avgOrderValue
+        ? formatCurrency(avgOrderValue, currency!)
+        : `${currency}0.00`,
+      trend: "+8%",
+      trendDirection: "up",
+      icon: CurrencyDollar,
+    },
+    {
+      label: "Returns Pending",
+      value: returnsCount?.toString() || "0",
+      trend: "",
+      trendDirection: "neutral",
+      icon: ExclamationCircle,
+    },
+  ];
 
   return (
     <div className="flex flex-col gap-y-4 p-4">
@@ -100,7 +94,7 @@ export const Home = () => {
             level="h2"
             className="text-lg font-medium text-ui-fg-base sm:text-xl"
           >
-            {getGreeting(data.user.firstName)}
+            {getGreeting(MOCK_DATA.user.firstName)}
           </Heading>
           <Text className="text-sm text-ui-fg-subtle sm:text-base">
             Here is what's happening in your store today.
@@ -126,7 +120,7 @@ export const Home = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {data.metrics.map((metric, index) => (
+        {metrics.map((metric, index) => (
           <Container key={index} className="flex flex-col gap-y-2 p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-x-2 text-ui-fg-subtle">
@@ -135,23 +129,35 @@ export const Home = () => {
                   {metric.label}
                 </Text>
               </div>
-              <div
-                className={`flex items-center gap-x-1 text-xs ${
-                  metric.trendDirection === "up"
-                    ? "text-green-600"
-                    : metric.trendDirection === "down"
+
+              {/* SKELETON FOR TREND */}
+              {isLoading ? (
+                <div className="h-4 w-12 animate-pulse rounded bg-ui-bg-base-hover" />
+              ) : (
+                <div
+                  className={`flex items-center gap-x-1 text-xs ${
+                    metric.trendDirection === "up"
+                      ? "text-green-600"
+                      : metric.trendDirection === "down"
                       ? "text-red-600"
                       : "text-ui-fg-muted"
-                }`}
-              >
-                {metric.trendDirection === "up" && <ArrowUpMini />}
-                {metric.trendDirection === "down" && <ArrowDownMini />}
-                <span>{metric.trend}</span>
-              </div>
+                  }`}
+                >
+                  {metric.trendDirection === "up" && <ArrowUpMini />}
+                  {metric.trendDirection === "down" && <ArrowDownMini />}
+                  <span>{metric.trend}</span>
+                </div>
+              )}
             </div>
-            <Heading level="h2" className="text-2xl">
-              {metric.value}
-            </Heading>
+
+            {/* SKELETON FOR VALUE */}
+            {isLoading ? (
+              <div className="mt-1 h-8 w-24 animate-pulse rounded bg-ui-bg-base-hover" />
+            ) : (
+              <Heading level="h2" className="text-2xl">
+                {metric.value}
+              </Heading>
+            )}
           </Container>
         ))}
       </div>
@@ -164,9 +170,9 @@ export const Home = () => {
               <Button variant="secondary">View All</Button>
             </Link>
           </div>
+          {/* Ensure OrderListTable handles its own loading state or wrap it similarly */}
           <OrderListTable />
         </Container>
-
         <div className="flex flex-col gap-y-4">
           <Container className="p-0 overflow-hidden">
             <div className="flex items-center gap-x-2 px-6 py-4 border-b border-ui-border-base bg-ui-bg-base-subtle">
@@ -176,7 +182,7 @@ export const Home = () => {
               </Heading>
             </div>
             <div className="flex flex-col">
-              {data.lowStock.map((item, i) => (
+              {MOCK_DATA.lowStock.map((item, i) => (
                 <div
                   key={i}
                   className="flex items-center justify-between px-6 py-2 border-b border-ui-border-base last:border-0 hover:bg-ui-bg-base-hover"

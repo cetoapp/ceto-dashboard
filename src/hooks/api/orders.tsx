@@ -455,3 +455,97 @@ export const useExportOrders = (
     ...options,
   })
 }
+
+
+
+const getStartOfToday = () => {
+  const date = new Date()
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+export const useOrderRevenueMetrics = (
+  query?: HttpTypes.AdminOrderFilters,
+  options?: Omit<
+    UseQueryOptions<
+      HttpTypes.AdminOrderListResponse,
+      FetchError,
+      { totalRevenue: number; avgOrderValue: number; count: number },
+      QueryKey
+    >,
+    "queryFn" | "queryKey"
+  >
+) => {
+  const { data, ...rest } = useQuery({
+    queryFn: async () => sdk.admin.order.list(query),
+    queryKey: ordersQueryKeys.list(query),
+    ...options,
+    select: (response) => {
+      const orders = response.orders || []
+      const totalRevenue = orders.reduce((acc, order) => acc + (order.total || 0), 0)
+      const count = response.count || orders.length
+      const avgOrderValue = count > 0 ? totalRevenue / count : 0
+
+      return {
+        totalRevenue,
+        avgOrderValue,
+        count,
+      }
+    },
+  })
+
+  return { ...data, ...rest }
+}
+
+export const useOrdersToday = (
+  options?: Omit<
+    UseQueryOptions<
+      HttpTypes.AdminOrderListResponse,
+      FetchError,
+      { count: number },
+      QueryKey
+    >,
+    "queryFn" | "queryKey"
+  >
+) => {
+  const todayFilter: HttpTypes.AdminOrderFilters = {
+    created_at: {
+      $gt: getStartOfToday().toISOString(),
+    },
+  }
+
+  const { data, ...rest } = useQuery({
+    queryFn: async () => sdk.admin.order.list(todayFilter),
+    queryKey: ordersQueryKeys.list(todayFilter),
+    ...options,
+    select: (response) => ({
+      count: response.count,
+    }),
+  })
+
+  return { ...data, ...rest }
+}
+
+export const usePendingReturnOrders = (
+  options?: Omit<
+    UseQueryOptions<
+      HttpTypes.AdminOrderListResponse,
+      FetchError,
+      { count: number },
+      QueryKey
+    >,
+    "queryFn" | "queryKey"
+  >
+) => {
+
+  const { data, ...rest } = useQuery({
+    queryFn: async () => sdk.admin.order.list(),
+    queryKey: ordersQueryKeys.list(),
+    ...options,
+    select: (response) => ({
+      count: response.count,
+    }),
+  })
+
+  return { ...data, ...rest }
+}

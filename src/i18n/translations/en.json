@@ -200,6 +200,7 @@
       "commandShortcut": "Commands",
       "then": "then",
       "navigation": {
+        "goToHome": "Home",
         "goToOrders": "Orders",
         "goToProducts": "Products",
         "goToCollections": "Collections",

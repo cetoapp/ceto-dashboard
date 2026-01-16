@@ -779,6 +779,9 @@
             "navigation": {
               "type": "object",
               "properties": {
+                "goToHome": {
+                  "type": "string"
+                },
                 "goToOrders": {
                   "type": "string"
                 },
@@ -814,6 +817,7 @@
                 }
               },
               "required": [
+                "goToHome",
                 "goToOrders",
                 "goToProducts",
                 "goToCollections",

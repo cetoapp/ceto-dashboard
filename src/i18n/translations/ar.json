@@ -192,6 +192,7 @@
       "commandShortcut": "الأوامر",
       "then": "ثم",
       "navigation": {
+        "goToHome": "الرئيسية",
         "goToOrders": "الطلبات",
         "goToProducts": "المنتجات",
         "goToCollections": "المجموعات",

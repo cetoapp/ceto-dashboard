@@ -13,7 +13,7 @@ import {
   Users,
   House,
 } from "@medusajs/icons";
-import { Avatar, Divider, DropdownMenu, Text, clx } from "@medusajs/ui";
+import { Divider, DropdownMenu, Text, clx } from "@medusajs/ui";
 import { useTranslation } from "react-i18next";
 
 import { useStore } from "../../../hooks/api/store";

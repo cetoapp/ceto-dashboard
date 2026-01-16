@@ -192,6 +192,7 @@
       "commandShortcut": "Commandes",
       "then": "alors",
       "navigation": {
+        "goToHome": "Accueil",
         "goToOrders": "Commandes",
         "goToProducts": "Produits",
         "goToCollections": "Collections",
