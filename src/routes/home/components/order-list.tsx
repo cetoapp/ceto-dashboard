@@ -43,7 +43,7 @@ export const OrderListTable = () => {
   }
 
   return (
-    <Container className="divide-y p-0">
+    <Container className="divide-y p-0 h-full">
       <_DataTable
         columns={columns}
         table={table}

@@ -1552,12 +1552,77 @@
         "domain": {
           "type": "string"
         },
-        "welcome" : {
-          "type" : "string"
+        "greeting_morning": {
+          "type": "string"
+        },
+        "greeting_evening": {
+          "type": "string"
+        },
+        "welcome": {
+          "type": "string"
+        },
+        "revenue": {
+          "type": "string"
+        },
+        "avg_order": {
+          "type": "string"
+        },
+        "order_today": {
+          "type": "string"
+        },
+        "order_total": {
+          "type": "string"
+        },
+        "recent_orders": {
+          "type": "string"
+        },
+        "view_all_orders": {
+          "type": "string"
+        },
+        "out_of_stock": {
+          "type": "string"
+        },
+        "out_of_stock_status": {
+          "type": "string"
+        },
+        "restock": {
+          "type": "string"
+        },
+        "boost": {
+          "type": "string"
+        },
+        "promo_message": {
+          "type": "string"
+        },
+        "promo_visit": {
+          "type": "string"
+        },
+        "analytics": {
+          "type": "string"
+        },
+        "draft_order": {
+          "type": "string"
         }
       },
       "required": [
-        "domain"
+        "domain",
+        "greeting_morning",
+        "greeting_evening",
+        "welcome",
+        "revenue",
+        "avg_order",
+        "order_today",
+        "order_total",
+        "recent_orders",
+        "view_all_orders",
+        "out_of_stock",
+        "out_of_stock_status",
+        "restock",
+        "boost",
+        "promo_message",
+        "promo_visit",
+        "analytics",
+        "draft_order"
       ],
       "additionalProperties": false
     },

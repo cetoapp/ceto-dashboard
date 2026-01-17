@@ -396,7 +396,23 @@
   },
   "home": {
     "domain": "الرئيسية",
-    "welcome": "مرحباً بك في الصفحة الرئيسية"
+    "greeting_morning": "صباح الخير",
+    "greeting_evening": "مساء الخير",
+    "welcome": "إليك ملخص ما يحدث في متجرك اليوم.",
+    "revenue": "إجمالي الإيرادات",
+    "avg_order": "متوسط قيمة الطلب",
+    "order_today": "طلبات اليوم",
+    "order_total": "إجمالي الطلبات",
+    "recent_orders": "أحدث الطلبات",
+    "view_all_orders": "عرض الكل",
+    "out_of_stock": "تنبيه نفاد المخزون",
+    "out_of_stock_status": "المتبقي 0!",
+    "restock": "تجديد المخزون",
+    "boost": "تعزيز المبيعات",
+    "promo_message": "عزز مبيعاتك اليوم! لا تضيع الزيارات هباءً - ابدأ عرضاً ترويجياً وشاهد النتائج تتوالى.",
+    "promo_visit": "إنشاء عرض ترويجي",
+    "analytics": "عرض التحليلات",
+    "draft_order": "إنشاء مسودة طلب"
   },
   "products": {
     "stock": {
@@ -2610,7 +2626,10 @@
         "placeholder": "خطأ في الحجم",
         "tooltip": "يجب أن تكون القيمة معرفًا فريدًا لسبب الإرجاع."
       },
-      "label": { "label": "التسمية", "placeholder": "خطأ في الحجم" },
+      "label": {
+        "label": "التسمية",
+        "placeholder": "خطأ في الحجم"
+      },
       "description": {
         "label": "الوصف",
         "placeholder": "تلقى العميل الحجم الخطأ"

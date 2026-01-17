@@ -405,7 +405,23 @@
   },
   "home": {
     "domain": "Home",
-    "welcome": "Welcome to the homepage"
+    "greeting_morning": "Good Morning",
+    "greeting_evening": "Good Afternoon",
+    "welcome": "Here is what's happening in your store today.",
+    "revenue": "Total Revenue",
+    "avg_order": "Avg. Order Value",
+    "order_today": "Orders Today",
+    "order_total": "Total Orders",
+    "recent_orders": "Recent orders",
+    "view_all_orders": "View All",
+    "out_of_stock": "Out of Stock Alert",
+    "out_of_stock_status": "0 left!",
+    "restock": "Restock Inventory",
+    "boost": "Boost Sales",
+    "promo_message": "Boost Your Sales Today! Don’t let traffic go to waste—start a Promotion and watch results roll in.",
+    "promo_visit": "Create a Promotion",
+    "analytics": "View Analytics",
+    "draft_order": "Create Draft Order"
   },
   "products": {
     "domain": "Products",

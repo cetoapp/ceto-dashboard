@@ -385,7 +385,23 @@
   },
   "home": {
     "domain": "Accueil",
-    "welcome": "Bienvenue sur la page d’accueil"
+    "greeting_morning": "Bonjour",
+    "greeting_evening": "Bon après-midi",
+    "welcome": "Voici ce qui se passe dans votre boutique aujourd'hui.",
+    "revenue": "Revenu total",
+    "avg_order": "Panier moyen",
+    "order_today": "Commandes du jour",
+    "order_total": "Total des commandes",
+    "recent_orders": "Commandes récentes",
+    "view_all_orders": "Tout voir",
+    "out_of_stock": "Alerte de rupture de stock",
+    "out_of_stock_status": "0 restant !",
+    "restock": "Réapprovisionner le stock",
+    "boost": "Booster les ventes",
+    "promo_message": "Boostez vos ventes dès aujourd'hui ! Ne laissez pas votre trafic se perdre : lancez une promotion et admirez les résultats.",
+    "promo_visit": "Créer une promotion",
+    "analytics": "Voir les statistiques",
+    "draft_order": "Créer une commande brouillon"
   },
   "products": {
     "domain": "Produits",
@@ -2452,7 +2468,10 @@
         "placeholder": "mauvaise_taille",
         "tooltip": "La valeur doit être un identifiant unique pour la raison de retour."
       },
-      "label": { "label": "Label", "placeholder": "Mauvaise taille" },
+      "label": {
+        "label": "Label",
+        "placeholder": "Mauvaise taille"
+      },
       "description": {
         "label": "Description",
         "placeholder": "Le client a reçu la mauvaise taille"
